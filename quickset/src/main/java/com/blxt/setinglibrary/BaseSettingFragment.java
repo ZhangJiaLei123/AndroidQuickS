@@ -1,13 +1,13 @@
 package com.blxt.setinglibrary;
 
 import android.annotation.SuppressLint;
+import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.fragment.app.Fragment;
 
 import com.blxt.quickset.R;
 import com.blxt.setinglibrary.item.BaseSetItemView;
