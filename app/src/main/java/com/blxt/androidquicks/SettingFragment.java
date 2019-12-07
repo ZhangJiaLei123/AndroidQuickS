@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import com.blxt.setinglibrary.BaseSettingFragment;
 import com.blxt.setinglibrary.item.BaseSetItemView;
 import com.blxt.setinglibrary.item.SetItemView;
+import com.blxt.setinglibrary.item.SetItemViewSeparator;
 import com.blxt.setinglibrary.item.SetItemViewSw;
 
 public class SettingFragment extends BaseSettingFragment implements BaseSetItemView.OnClickListenerCallBack {
@@ -40,6 +41,9 @@ public class SettingFragment extends BaseSettingFragment implements BaseSetItemV
                 .setHint("需要权限"));
         addItem(new SetItemViewSw(getContext(), "固定通知")
                 .setTitleImage(R.mipmap.ic_launcher_round));
+        // 分组
+        addItem(new SetItemViewSeparator(getContext(), "分享"));
+
         addItem(new SetItemView(getContext(), "分享")
                 .setTitleImage(R.mipmap.ic_launcher_round)
                 .setHint("分享安装连接"));
