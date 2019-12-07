@@ -24,6 +24,7 @@
 * 2. 继承类库
 ``` java {.line-numbers}
 
+import android.content.Intent;
 import android.os.Bundle;
 import com.blxt.quickwelcome.BaseWelcomeActivity;
 import com.blxt.quickwelcome.WellComeViewModel;
@@ -80,8 +81,29 @@ public class WelcomeActivity extends BaseWelcomeActivity implements WellComeView
         super.onTimeFinish();
 
     }
+
+    /**
+     * 结束欢迎页
+     */
+    @Override
+    public void finish() {
+        super.finish();
+        // 启动MainActivity
+        startActivity(new Intent(this, MainActivity.class));
+    }
 }
 
+```
 
+3. Manifest
+``` xml {.line-numbers}
+
+        <activity android:name="com.blxt.androidquicks.WelcomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
 ```

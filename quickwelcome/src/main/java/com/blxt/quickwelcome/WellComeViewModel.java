@@ -144,7 +144,14 @@ public class WellComeViewModel extends ViewModel implements RoundProgressBar.Pro
         if(set != null )
         {
             set.cancel();
+            set = null;
         }
+        if (spikBar != null){
+            spikBar.pause();
+            spikBar.destroy();
+            spikBar = null;
+        }
+
     }
 
 

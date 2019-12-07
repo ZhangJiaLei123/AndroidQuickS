@@ -108,6 +108,7 @@ public class BaseWelcomeActivity extends Activity implements WellComeViewModel.W
     @Override
     public void finish() {
         wellComeViewModel.finish();
+        wellComeViewModel = null;
         super.finish();
     }
 

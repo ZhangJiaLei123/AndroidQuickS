@@ -372,7 +372,14 @@ public class RoundProgressBar extends View {
         }
     }
 
-    @Override
+    public void destroy(){
+        animator.removeAllUpdateListeners();
+        animator.removeAllListeners();
+        mProgressChangeListener = null;
+        stop();
+    }
+
+   @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
         setDirection(mDirections[directionIndex]);

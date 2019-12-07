@@ -1,5 +1,6 @@
 package com.blxt.androidquicks;
 
+import android.content.Intent;
 import android.os.Bundle;
 import com.blxt.quickwelcome.BaseWelcomeActivity;
 import com.blxt.quickwelcome.WellComeViewModel;
@@ -55,5 +56,15 @@ public class WelcomeActivity extends BaseWelcomeActivity implements WellComeView
     public void onTimeFinish() {
         super.onTimeFinish();
 
+    }
+
+    /**
+     * 结束欢迎页
+     */
+    @Override
+    public void finish() {
+        super.finish();
+        // 启动MainActivity
+        startActivity(new Intent(this, MainActivity.class));
     }
 }
