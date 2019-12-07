@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 
+import com.blxt.quickwelcome.viewmodel.WellComeViewModel;
+
 /**
  * 欢迎页
  */

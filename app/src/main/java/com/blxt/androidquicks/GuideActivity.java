@@ -7,10 +7,14 @@ import com.blxt.quickwelcome.BaseGuideActivity;
 
 public class GuideActivity extends BaseGuideActivity implements BaseGuideActivity.GuideListener {
 
+
     // 背景图片
     private int[] backgroundImages = {R.drawable.wellcome, R.drawable.wellcome1};
     // 上景图片
     private int[] foregroundImages = {R.drawable.uoko_guide_foreground_1, R.drawable.uoko_guide_foreground_2};
+
+    //
+    public static boolean isGuideRuned = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,8 +27,10 @@ public class GuideActivity extends BaseGuideActivity implements BaseGuideActivit
             getBtnGuideEnter().setText("开始体验");
             // 加载图片
             processLogic(backgroundImages, foregroundImages);
+            isGuideRuned = true;
         }
         else{
+            isGuideRuned = false;
             finish();
             return;
         }
@@ -34,7 +40,7 @@ public class GuideActivity extends BaseGuideActivity implements BaseGuideActivit
 
     public void finish() {
         super.finish();
-        startActivity(new Intent(this, MainActivity.class));
+        startActivity(new Intent(this, WelcomeActivity.class));
     }
 
     @Override

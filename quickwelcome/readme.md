@@ -27,7 +27,7 @@
 import android.content.Intent;
 import android.os.Bundle;
 import com.blxt.quickwelcome.BaseWelcomeActivity;
-import com.blxt.quickwelcome.WellComeViewModel;
+import com.blxt.quickwelcome.viewmodel.WellComeViewModel;
 
 public class WelcomeActivity extends BaseWelcomeActivity implements WellComeViewModel.WellComeListener {
 

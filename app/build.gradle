@@ -35,9 +35,10 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
-    implementation(name: 'quickset-1.0.0', ext:'aar')
+   // implementation(name: 'quickset-1.0.0', ext:'aar')
     implementation project(path: ':quickwelcome')
     implementation project(path: ':quickview')
+    implementation project(path: ':quickset')
 
    // implementation 'com.qfxl:roundProgressBar:1.1.1'
 }

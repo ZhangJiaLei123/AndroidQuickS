@@ -27,13 +27,15 @@
             android:layout_marginLeft="10dp"
             android:gravity="center_vertical"
             android:text="设置项"
-            android:textColor="#050000"/>
+            android:textColor="#050000"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/_item_tip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="提示"
+            android:textSize="8dp"
             android:textColor="#8A8686"/>
 
         <Switch

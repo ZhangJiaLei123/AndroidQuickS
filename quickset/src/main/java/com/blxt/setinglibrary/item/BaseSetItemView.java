@@ -33,7 +33,7 @@ public class BaseSetItemView extends LinearLayout {
     protected List<View> subView = new ArrayList<>();
 
     private CharSequence tipText = null;
-
+    private String spKey = null;
     public BaseSetItemView(Context context) {
         super(context);
 
@@ -186,10 +186,18 @@ public class BaseSetItemView extends LinearLayout {
         return sharedPreferences.getString(getKey(), "null");
     }
 
+    public BaseSetItemView setSpKey(String key){
+        spKey = key;
+        return this;
+    }
+
     public String getKey(){
         String key = null;
 
-        if(tv_title.getText() != null ){
+        if(spKey != null){
+            key = spKey;
+        }
+        else if(tv_title.getText() != null ){
             key = tv_title.getText().toString();
         }
         if(key == null || key.trim().length() <= 0){
@@ -203,6 +211,7 @@ public class BaseSetItemView extends LinearLayout {
 
         return key;
     }
+
 
 
     OnClickListenerCallBack clickListener = null;

@@ -1,4 +1,4 @@
-package com.blxt.quickwelcome;
+package com.blxt.quickwelcome.viewmodel;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -13,6 +13,8 @@ import android.widget.TextView;
 import androidx.lifecycle.ViewModel;
 
 import com.blxt.quickview.progressbar.RoundProgressBar;
+import com.blxt.quickwelcome.BaseWelcomeActivity;
+import com.blxt.quickwelcome.R;
 
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -77,7 +79,6 @@ public class WellComeViewModel extends ViewModel implements RoundProgressBar.Pro
         WellcomTitle = view.findViewById(R.id._wellcom_title);
         WellcomLogo = view.findViewById(R.id._wellcom_logo);
         WellcomButtomTips = view.findViewById(R.id._wellcom_buttom_tips);
-
 
     }
 

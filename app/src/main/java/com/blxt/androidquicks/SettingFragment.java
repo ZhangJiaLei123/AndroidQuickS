@@ -52,7 +52,10 @@ public class SettingFragment extends BaseSettingFragment implements BaseSetItemV
         addItem(new SetItemView(getContext(), "检查更新")
                 .setTitleImage(R.mipmap.ic_launcher_round)
                 .setHint(R.string.app_version));
-
+        addItem(new SetItemViewSw(getContext(), "恢复出厂模式")
+                .setTitleImage(R.mipmap.ic_launcher_round)
+                .setHint("重新运行引导页")
+                .setSpKey("首次运行"));
     }
 
 
@@ -60,8 +63,12 @@ public class SettingFragment extends BaseSettingFragment implements BaseSetItemV
     public boolean onClickSetItem(View view) {
        // super
         if(view instanceof BaseSetItemView){
-            String title = ((BaseSetItemView) view).getTitle();
+            BaseSetItemView baseSetItemView = (BaseSetItemView)view;
+            String title = baseSetItemView.getTitle();
             Log.i("点击",title);
+            if (title.equals("恢复出厂模式")){
+                baseSetItemView.setHint("下次启动时,将重新运行引导页");
+            }
         }
         return true;
     }
