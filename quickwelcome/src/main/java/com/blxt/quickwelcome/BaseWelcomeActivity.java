@@ -1,6 +1,8 @@
 package com.blxt.quickwelcome;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -10,6 +12,20 @@ import android.view.WindowManager;
  * 欢迎页
  */
 public class BaseWelcomeActivity extends Activity implements WellComeViewModel.WellComeListener {
+
+
+    protected static SharedPreferences sharedPreferences = null;
+
+    SharedPreferences getSP(Context context){
+        if(sharedPreferences == null){
+            sharedPreferences = context.getSharedPreferences(context.getPackageName() + "_preferences", MODE_PRIVATE);
+        }
+        return sharedPreferences;
+    }
+
+    /**
+     * 首次运行标记     */
+    boolean isFristRun = false;
 
     /**
      * 自动跳出
@@ -36,9 +52,23 @@ public class BaseWelcomeActivity extends Activity implements WellComeViewModel.W
 
         setContentView(R.layout._welcomelayout);
 
-        wellComeViewModel = new WellComeViewModel(getWindow().getDecorView());
+        View view = getWindow().getDecorView();
+        wellComeViewModel = new WellComeViewModel(view);
         wellComeViewModel.setProgressChangeListener(this);
 
+        getSP(view.getContext());
+
+        // 判断首次运行
+        String strTmp = sharedPreferences.getString("首次运行", "true");
+
+        if(strTmp.equals("true") || strTmp.equals("TRUE")){
+            isFristRun = true;
+        }
+        else{
+            isFristRun = false;
+        }
+        // 标记首次运行
+        sharedPreferences.edit().putString("首次运行", "false").commit();
     }
 
 
@@ -79,6 +109,10 @@ public class BaseWelcomeActivity extends Activity implements WellComeViewModel.W
     public void finish() {
         wellComeViewModel.finish();
         super.finish();
+    }
+
+    public boolean isFirstRun(){
+        return isFristRun;
     }
 
     public WellComeViewModel getWellComeViewModel(){

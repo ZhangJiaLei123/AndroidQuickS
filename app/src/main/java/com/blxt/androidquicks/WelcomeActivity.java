@@ -17,7 +17,18 @@ public class WelcomeActivity extends BaseWelcomeActivity implements WellComeView
         super.onCreate(savedInstanceState);
 
         //获取ViewModel
-        WellComeViewModel wellComeViewModel = super.getWellComeViewModel();
+        WellComeViewModel wellComeViewModel = getWellComeViewModel();
+
+        // 首次运行判断
+        if (isFirstRun()){
+            // 开始加载
+            wellComeViewModel.init();
+        }
+        else{
+            finish();
+            return;
+        }
+
         // 设置logo
         wellComeViewModel.setWellcomLogo(R.drawable.quicklogo);
         // 设置标题
@@ -26,8 +37,7 @@ public class WelcomeActivity extends BaseWelcomeActivity implements WellComeView
         wellComeViewModel.setWellcomButtomTips("AndroidQuickS Demo");
         // 设置图片资源
         wellComeViewModel.setImagesWellcom(Imgs);
-        // 开始加载
-        wellComeViewModel.init();
+
     }
 
     /**
