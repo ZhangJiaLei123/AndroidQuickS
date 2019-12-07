@@ -17,10 +17,11 @@
 
 ### 基础库
 
-* quickview 基础试图控件
+* quickview 通用基础视图控件
 
 ### app框架
 
+* app 演示demo
 * quickwelcome 欢迎页
 * quickset 设置页
 

@@ -50,7 +50,7 @@ dependencies {
 uploadArchives {
     repositories {
         mavenDeployer {
-            def mavenDirPath = file('E:\\MyComputer\\Documents\\workSpace\\Android\\library')
+            def mavenDirPath = file('E:\\MyComputer\\SoftData\\Maven\\maven_Repository')
             repository(url: "file://${mavenDirPath.absolutePath}")
             pom.project {
                 name 'quickwelcome'
