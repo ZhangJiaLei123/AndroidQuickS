@@ -13,6 +13,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
     }
 
     buildTypes {
@@ -30,23 +31,23 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:support-v4:29.0.0'
-    implementation 'com.android.support:appcompat-v7:29.0.0'
-    implementation 'androidx.appcompat:appcompat:1.0.2'
+
+    implementation 'androidx.appcompat:appcompat:1.1.0'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }
-//  gradlew :quickset:uploadArchives
+
+//  gradlew :quickview:uploadArchives
 uploadArchives {
     repositories {
         mavenDeployer {
             def mavenDirPath = file('E:\\MyComputer\\Documents\\workSpace\\Android\\library')
             repository(url: "file://${mavenDirPath.absolutePath}")
             pom.project {
-                name 'quickset'
+                name 'quickview'
                 groupId 'blxt'
-                artifactId 'quickset'
+                artifactId 'quickview'
                 version '1.0.0'
                 packaging 'aar'
 

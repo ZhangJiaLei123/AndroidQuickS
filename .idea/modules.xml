@@ -5,6 +5,8 @@
       <module fileurl="file://$PROJECT_DIR$/AndroidQuickS.iml" filepath="$PROJECT_DIR$/AndroidQuickS.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/quickset/quickset.iml" filepath="$PROJECT_DIR$/quickset/quickset.iml" />
+      <module fileurl="file://$PROJECT_DIR$/quickview/quickview.iml" filepath="$PROJECT_DIR$/quickview/quickview.iml" />
+      <module fileurl="file://$PROJECT_DIR$/quickwelcome/quickwelcome.iml" filepath="$PROJECT_DIR$/quickwelcome/quickwelcome.iml" />
     </modules>
   </component>
 </project>

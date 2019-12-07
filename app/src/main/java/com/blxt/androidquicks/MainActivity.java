@@ -5,9 +5,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+
 public class MainActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         SettingFragment settingFragment = SettingFragment.newInstance();
         changeFragment(settingFragment);
+
+        startActivity(new Intent(this, WelcomeActivity.class));
     }
 
     private void changeFragment(Fragment fragment){

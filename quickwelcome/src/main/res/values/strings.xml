@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">QuickWelcome</string>
+    <string name="app_support_tips">由QuickWelcome提供支持</string>
+    <string name="title_activity_welcome">WelcomeActivity</string>
+</resources>
