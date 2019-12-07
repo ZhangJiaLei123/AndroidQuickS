@@ -11,7 +11,7 @@ public class WelcomeActivity extends BaseWelcomeActivity implements WellComeView
      * 随机的欢迎页图片
      */
     private final int[] Imgs={
-            com.blxt.quickwelcome.R.drawable.wellcome1, com.blxt.quickwelcome.R.drawable.wellcome};
+            R.drawable.wellcome1, R.drawable.wellcome};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

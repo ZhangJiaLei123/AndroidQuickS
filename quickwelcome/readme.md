@@ -107,3 +107,70 @@ public class WelcomeActivity extends BaseWelcomeActivity implements WellComeView
         </activity>
 
 ```
+
+### 快速搭建引导页
+
+ * 参见 [BGABanner-Android](readmeGuide)
+
+#### 快速使用
+
+1. Manifest
+``` xml {.line-numbers}
+
+
+    <activity android:name=".GuideActivity">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
+
+```
+2. 继承库类
+ ``` java {.line-numbers}
+import android.content.Intent;
+import android.os.Bundle;
+
+import com.blxt.quickwelcome.BaseGuideActivity;
+
+public class GuideActivity extends BaseGuideActivity implements BaseGuideActivity.GuideListener {
+
+    // 背景图片
+    private int[] backgroundImages = {R.drawable.wellcome, R.drawable.wellcome1};
+    // 上景图片
+    private int[] foregroundImages = {R.drawable.uoko_guide_foreground_1, R.drawable.uoko_guide_foreground_2};
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        // 首次运行判断
+        if (isFirstRun()){
+            // 开始加载
+            setGuideListener(this);
+            getBtnGuideEnter().setText("开始体验");
+            // 加载图片
+            processLogic(backgroundImages, foregroundImages);
+        }
+        else{
+            finish();
+            return;
+        }
+
+    }
+
+
+    public void finish() {
+        super.finish();
+        startActivity(new Intent(this, MainActivity.class));
+    }
+
+    @Override
+    public void onFinish() {
+        finish();
+
+    }
+}
+
+ ```
