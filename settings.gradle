@@ -1,2 +1,2 @@
-include ':app', ':quickset', ':quickwelcome', ':quickview'
+include ':app', ':quickset', ':quickwelcome', ':quickview', ':quickpermission'
 rootProject.name='AndroidQuickS'

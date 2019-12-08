@@ -1,4 +1,4 @@
-package com.blxt.androidquicks;
+package com.blxt.androidquicks.fragment;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.blxt.androidquicks.R;
 import com.blxt.setinglibrary.BaseSettingFragment;
 import com.blxt.setinglibrary.item.BaseSetItemView;
 import com.blxt.setinglibrary.item.SetItemView;

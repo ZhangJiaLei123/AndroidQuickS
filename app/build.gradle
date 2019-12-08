@@ -20,7 +20,7 @@ android {
 
     repositories {
         flatDir {
-          dirs 'libs'
+            dirs 'libs'
         }
     }
 
@@ -32,13 +32,15 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:29.0.0'
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'com.google.android.material:material:1.0.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
-   // implementation(name: 'quickset-1.0.0', ext:'aar')
+    // implementation(name: 'quickset-1.0.0', ext:'aar')
     implementation project(path: ':quickwelcome')
     implementation project(path: ':quickview')
     implementation project(path: ':quickset')
+    compile project(path: ':quickpermission')
 
-   // implementation 'com.qfxl:roundProgressBar:1.1.1'
+    // implementation 'com.qfxl:roundProgressBar:1.1.1'
 }

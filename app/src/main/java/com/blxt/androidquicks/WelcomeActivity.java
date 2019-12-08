@@ -75,6 +75,6 @@ public class WelcomeActivity extends BaseWelcomeActivity implements WellComeView
     public void finish() {
         super.finish();
         // 启动MainActivity
-        startActivity(new Intent(this, MainActivity.class));
+        MainActivity.start(this);
     }
 }

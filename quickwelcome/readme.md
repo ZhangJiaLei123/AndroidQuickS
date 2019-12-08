@@ -112,6 +112,9 @@ public class WelcomeActivity extends BaseWelcomeActivity implements WellComeView
 
  * 参见 [BGABanner-Android](readmeGuide)
 
+![banner](https://cloud.githubusercontent.com/assets/8949716/17557718/dc235ec4-5f4a-11e6-92b7-144a2a1a1e3f.gif)
+
+
 #### 快速使用
 
 1. Manifest
@@ -174,3 +177,7 @@ public class GuideActivity extends BaseGuideActivity implements BaseGuideActivit
 }
 
  ```
+
+ #### 依赖库
+
+ *  [QuickView](../quickview/README.md)

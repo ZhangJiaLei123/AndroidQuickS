@@ -34,9 +34,11 @@
 
  ###### [QuickWeiicome - 快速搭建欢迎页面](./quickwelcome/readme.md)
 
- * 效果图
+ * 欢迎界面效果图
  ![demo](./quickwelcome/doc/image/效果图.png)
 
+ * 引导界面效果图
+![banner](https://cloud.githubusercontent.com/assets/8949716/17557718/dc235ec4-5f4a-11e6-92b7-144a2a1a1e3f.gif)
 
 ### 正在完成
 
