@@ -2,7 +2,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:gravity="center"
     style="@style/PermissionStyle"
-    android:background="#00FFFFFF">
+    android:background="#3B636262">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_gravity="bottom"
+        android:gravity="center"
+        android:textColor="#690202"
+        android:text="此软件需要必要的权限才可正常工作,详情请参见用户协议" />
 
 </LinearLayout>

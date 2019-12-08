@@ -1,54 +1,61 @@
 package com.blxt.quickpermission;
 
 import android.Manifest;
-import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.graphics.Color;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
-import android.view.Display;
-import android.view.Gravity;
-import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Toast;
 
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.blxt.quickview.ActivityStytle;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
+import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static android.view.View.GONE;
-import static android.view.View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
 
 /**
  * 权限申请
  */
 public class BasePermissionActivity extends Activity {
 
-    private static final String TAG = "BasePermissionActivity";
-    private boolean isDefaultDialog = true;
-    private static final int REQUST_CODE = 101;
-    private String[] mPermissions = new String[]{
+    private static final int NOT_NOTICE = 2;//如果勾选了不再询问
+    private AlertDialog alertDialog;
+    private AlertDialog mDialog;
+    /**
+     * 需要申请的权限数量
+     */
+    private int numberPermiss = 0;
+    private int supNumberPermiss = 0;
 
-            // Manifest.permission.SYSTEM_ALERT_WINDOW, //  悬浮窗
-             Manifest.permission.RECORD_AUDIO,          //  音频录制
-            Manifest.permission.MODIFY_AUDIO_SETTINGS,  //  音频录制
-            Manifest.permission.WRITE_SETTINGS,         //  SD卡读写
-            //Manifest.permission.WRITE_EXTERNAL_STORAGE,
-            Manifest.permission.CAMERA                  //  相机
-            //, Manifest.permission.TYPE_APPLICATION_OVERLAY
-    };
+    protected PermissionInfo permissInfo = new PermissionInfo(Manifest.permission.WRITE_EXTERNAL_STORAGE, "基础文件读写");
+    /**
+     *  特殊权限处理
+     */
+    String[] superPermiss = null;
+    /**
+     * 对话框镖旗
+     */
+    protected String title = "权限申请";
+    /**
+     * 权限提示内容
+     */
+    protected String message = "点击允许才可以使用我们的app哦";
+    /**
+     * 提示框logo
+     */
+    protected int titleIcoResID = R.drawable.ic_permiss;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,166 +64,245 @@ public class BasePermissionActivity extends Activity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout._permission_layout);
-        initPermission();
 
         ActivityStytle.setNavigationBar(this, GONE);
         ActivityStytle.statusBarHide(this);
 
     }
 
-    public Context getContext(){
-        return this;
-    }
-
-    /***
-     * 初始化权限
-     * @return
-     */
-    boolean initPermission(){
-        Log.i(TAG,"检查权限");
-
-
-        boolean isPermission = false;
-        for(String s : mPermissions){
-            if(!isPermissionGrant(s)){
-                isPermission = true;
-                break;
-            }
-        }
-
-        if(isPermission)
-        {
-            checkPermission();
-        }
-
-        return false;
-    }
-
-    /**
-     * 检查 是否 有 xx权限
-     * @param permission
-     * @return
-     */
-    public boolean isPermissionGrant(String permission) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            return checkSelfPermission(permission) == PackageManager.PERMISSION_GRANTED;
-        }
-        return true;
-    }
-
-    /**
-     * 发起请求权限
-     * @return
-     */
-    public boolean checkPermission() {
-
-
-        if (Build.VERSION.SDK_INT < 23) {
-            return true;
-        }
-
-        List<String> permissionToRequestList = new LinkedList<String>();
-        for (String permission : mPermissions) {
-            if(checkSelfPermission(permission) != PackageManager.PERMISSION_GRANTED) {
-                permissionToRequestList.add(permission);
-            }
-        }
-        String[] permissionToRequest = (String[])permissionToRequestList.toArray(new String[permissionToRequestList.size()]);
-        if(permissionToRequest.length > 0){
-            requestPermissions(permissionToRequest, REQUST_CODE);
-            if (mCallback != null) {
-                mCallback.onRequest();
-            }
-        } else {
-            if (mCallback != null) {
-                mCallback.onGranted();
-            }
-        }
-
-        return false;
-    }
-
-
-    private PermissionCheckCallback mCallback = new PermissionCheckCallback() {
-        @Override
-        public void onRequest() {
-            Log.i(TAG,"onRequest");
-        }
-
-        @Override
-        public void onGranted() {
-            Log.i(TAG,"onGranted");
-        }
-
-        @Override
-        public void onGrantSuccess() {
-            Log.i(TAG,"授权成功");
-        }
-
-        @Override
-        public void onGrantFail() {
-            Log.i(TAG,"授权失败");
-            Toast.makeText(getContext(), "请打开必要权限", Toast.LENGTH_SHORT)
-                    .show();
-        }
-    };
-
-
-
-    /**
-     * 权限结果回调
-     * @param requestCode
-     * @param permissions
-     * @param grantResults
-     */
     @Override
-    public void onRequestPermissionsResult(int requestCode,
-                                           String permissions[], int[] grantResults) {
-        switch (requestCode) {
-            case REQUST_CODE:
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    if (mCallback != null) {
-                        mCallback.onGrantSuccess();
-                    }
-                    Log.v(TAG, "获取到权限" + grantResults[0]);
-                } else {
-                    Log.v(TAG, "未检测到权限");
-                    if (isDefaultDialog) {
-                      //  popupWarningDialog();
-                        break;
-                    }
-                    if (mCallback != null) {
-                        mCallback.onGrantFail();
-                    }
+    public void onResume(){
+        super.onResume();
+        Log.i("BasePermissionActivity", "onResume");
+        if (numberPermiss <= 0 && superPermiss != null && superPermiss.length > 0){
+            //由于不知道是否选择了允许所以需要再次判断
+            if (permissionCallBack != null){
+                if(permissionCallBack.SupPermiss()){
+                    myRequetPermission();
                 }
-                break;
-            default:
-                break;
-        }
-
-
-        for(String s : mPermissions){
-            if(!isPermissionGrant(s)){
-                Log.v(TAG, "有权限" + s);
             }
             else{
-                Log.v(TAG, "没有权限" + s);
+                finish();
             }
+
         }
-        Log.v(TAG, "检查完毕");
     }
 
+
+    long lastTime = 0;
+    @Override
+    public void finish() {
+        Calendar calendar = Calendar.getInstance();
+        long time = calendar.getTimeInMillis();
+
+        // 处理重复跳转特俗权限的问题
+        if(time - lastTime < 500){
+            return;
+        }
+        lastTime = time;
+       if(numberPermiss <= 0 && supNumberPermiss <= 0){
+           onSuperfinish();
+           return;
+       }
+
+       if(makeSuperPermiss()){
+           onSuperfinish();
+           return;
+       }
+    }
+
+    public void onSuperfinish(){
+        boolean fal = true;
+        if(permissionCallBack != null){
+            fal = permissionCallBack.permissFinish();
+        }
+        if (fal){
+            super.finish();
+        }
+    }
 
     /**
-     * 结果回调接口
+     * 特殊权限处理
+     * @return
      */
-    public interface PermissionCheckCallback {
-        void onRequest();
-        void onGranted();
-        void onGrantSuccess();
-        void onGrantFail();
+    public boolean makeSuperPermiss(){
+        for(String s : superPermiss){
+            // 悬浮窗
+            if(s.equals(Manifest.permission.SYSTEM_ALERT_WINDOW)){
+                if (Build.VERSION.SDK_INT >= 23) {
+                    if (!Settings.canDrawOverlays(this)) { //若没有权限，提示获取.
+                        Log.i("BasePermissionActivity", "" + "没有悬浮窗");
+                        Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION);
+                        Toast.makeText(this,"需要取得权限以使用悬浮窗",Toast.LENGTH_SHORT).show();
+                        startActivity(intent);
+                    }
+                    else{
+                        supNumberPermiss--;
+                    }
+                }
+                else{
+                    supNumberPermiss--;
+                }
+            }
+        }
+        if(supNumberPermiss == 0 ){
+            super.finish();
+            return true;
+        }
+        return false;
     }
 
+
+    protected boolean myRequetPermission(PermissionInfo ...permissionInfo) {
+        List<String> permissionls = new ArrayList<>();
+        List<String> superPermisss = new ArrayList<>();
+        boolean isPermiss = true;
+        // 权限检查
+        for (PermissionInfo p : permissionInfo) {
+            // 悬浮窗等特殊权限需要做特殊处理
+            if(p.permission.equals(Manifest.permission.SYSTEM_ALERT_WINDOW)){
+                superPermisss.add(p.permission);
+            }
+            else{
+                if (ContextCompat.checkSelfPermission(this, p.permission) != PERMISSION_GRANTED) {
+                    permissionls.add(p.permission);
+                    isPermiss = false;
+                }
+            }
+        }
+
+        // 记录特殊权限
+        supNumberPermiss = superPermisss.size();
+        superPermiss = superPermisss.toArray(new String[supNumberPermiss]);
+
+        // 权限申请
+        if (!isPermiss) {
+            numberPermiss = permissionls.size();
+            String[] permissions = permissionls.toArray(new String[numberPermiss]);
+            ActivityCompat.requestPermissions(this, permissions, 1);
+            return false;
+        }
+         else {
+            finish();
+            return true;
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == 1)
+        {
+            for (int i = 0; i < permissions.length; i++) {
+                if (grantResults[i] == PERMISSION_GRANTED) {//选择了“始终允许”
+                    //Toast.makeText(this, "" + "权限" + permissions[i] + "申请成功", Toast.LENGTH_SHORT).show();
+                    Log.i("BasePermissionActivity", "" + "权限" + permissions[i] + "申请成功");
+                    // 一直到所有权限盛情成功后,才允许退出
+                    numberPermiss--;
+                    if(numberPermiss <= 0){
+                        numberPermiss--;
+                        finish();
+                    }
+                } else {
+                    Log.i("BasePermissionActivity", "" + "权限" + permissions[i] + "申请失败");
+                    // 选择不允许
+                    if (!ActivityCompat.shouldShowRequestPermissionRationale(this, permissions[i])){//用户选择了禁止不再询问
+
+                        AlertDialog.Builder builder = new AlertDialog.Builder(BasePermissionActivity.this);
+                        builder.setTitle(title)
+                                .setMessage(message)
+                                .setIcon(titleIcoResID)
+                                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface arg0, int arg1) {
+                                        //("您点击了取消按钮");
+                                       // finish();
+                                    }
+                                })
+                                .setPositiveButton("去允许", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        if (mDialog != null && mDialog.isShowing()) {
+                                            mDialog.dismiss();
+                                        }
+                                        // 去权限申请页
+                                        Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                                        Uri uri = Uri.fromParts("package", getPackageName(), null);//注意就是"package",不用改成自己的包名
+                                        intent.setData(uri);
+                                        startActivityForResult(intent, NOT_NOTICE);
+                                    }
+                                });
+                        mDialog = builder.create();
+                        mDialog.setCanceledOnTouchOutside(false);
+                        mDialog.show();
+
+
+                    }else {//选择禁止
+                        Log.i("BasePermissionActivity", "" + "权限" + permissions[0] + "申请失败");
+                        AlertDialog.Builder builder = new AlertDialog.Builder(BasePermissionActivity.this);
+                        builder.setTitle(title)
+                                .setMessage(message)
+                                .setIcon(titleIcoResID)
+                                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface arg0, int arg1) {
+                                            //("您点击了取消按钮");
+                                            //finish();
+                                        }
+                                    })
+                                .setPositiveButton("去允许", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        if (alertDialog != null && alertDialog.isShowing()) {
+                                            alertDialog.dismiss();
+                                        }
+                                        // 再次申请
+                                        ActivityCompat.requestPermissions(BasePermissionActivity.this,
+                                                new String[]{permissInfo.permission}, 1);
+                                    }
+                                });
+                        alertDialog = builder.create();
+                        alertDialog.setCanceledOnTouchOutside(false);
+                        alertDialog.show();
+                    }
+
+                }
+            }
+        }
+
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==NOT_NOTICE){
+            myRequetPermission(permissInfo);//由于不知道是否选择了允许所以需要再次判断
+        }
+    }
+
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+
+    }
+
+    public void setpPermissionCallBack(PermissionCallBack permissionCallBack){
+        this.permissionCallBack = permissionCallBack;
+    }
+
+    PermissionCallBack permissionCallBack = null;
+    public interface PermissionCallBack{
+        /**
+         * 发现没有特殊权限
+         * @return
+         */
+        boolean SupPermiss();
+
+        /**
+         * 结束
+         * @return
+         */
+        boolean permissFinish();
+    }
 
 }
