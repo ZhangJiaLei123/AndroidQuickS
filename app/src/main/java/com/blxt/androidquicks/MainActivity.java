@@ -48,8 +48,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickTest(View view){
-        BrightnessDialog brightnessDialog = new BrightnessDialog(this);
+        BrightnessDialog brightnessDialog = new BrightnessDialog( this);
         brightnessDialog.show();
+        brightnessDialog.setValue(255);
     }
 
     private void changeFragment(Fragment fragment){

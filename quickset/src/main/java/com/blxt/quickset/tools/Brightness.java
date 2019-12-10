@@ -3,6 +3,9 @@ package com.blxt.quickset.tools;
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
 import android.provider.Settings;
 import android.view.Window;
 import android.view.WindowManager;
@@ -11,6 +14,25 @@ import android.view.WindowManager;
  * 屏幕亮度设置工具
  */
 public class Brightness {
+
+    /**
+     * 检查权限,并跳转申请
+     */
+    public static boolean checkPermiss(Activity activity){
+        // 没有权限的话,就无法生效
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (!Settings.System.canWrite(activity)) {
+                Intent intent = new Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS,
+                        Uri.parse("package:" + activity.getPackageName()));
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                activity.startActivityForResult(intent, 1);
+                return false;
+            } else {
+                return true;
+            }
+        }
+        return true;
+    }
 
     /**
      * 自动调节屏幕亮度
@@ -56,7 +78,7 @@ public class Brightness {
      * 保存当前的屏幕亮度值，并使之生效
      */
     public static  void setBrightness(Activity context, int paramInt) {
-        setScreenMode(context, MODEL_MANUAL);
+       // setScreenMode(context, MODEL_MANUAL);
         Window localWindow = context.getWindow();
         WindowManager.LayoutParams localLayoutParams = localWindow.getAttributes();
         localLayoutParams.screenBrightness = paramInt / 255.0F;
@@ -66,6 +88,7 @@ public class Brightness {
     }
     /**
      * 设置当前屏幕亮度值 0--255
+     * 推荐使用此方法,这样在没有权限时,不会闪退
      */
     public static  void setBrightness(Context context,int paramInt) {
         setScreenMode(context, MODEL_MANUAL);
@@ -74,6 +97,20 @@ public class Brightness {
         } catch (Exception localException) {
             localException.printStackTrace();
         }
+    }
+
+    public static boolean isAutoBrightness(Context activity) {
+        try {
+            int autoBrightness = Settings.System.getInt(
+                    activity.getContentResolver(),
+                    Settings.System.SCREEN_BRIGHTNESS_MODE);
+            if (autoBrightness == Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC) {
+                return true;
+            }
+        } catch (Settings.SettingNotFoundException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
 }

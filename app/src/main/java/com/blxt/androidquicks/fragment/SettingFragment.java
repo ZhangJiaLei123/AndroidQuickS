@@ -47,7 +47,7 @@ public class SettingFragment extends BaseSettingFragment implements BaseSetItemV
         addItem(new SetItemViewSw(getContext(), "固定通知")
                 .setTitleImage(R.mipmap.ic_launcher_round));
 
-        addItem(new SetBrighView(getContext(), "亮度")
+        addItem(new SetBrighView( getActivity(),"亮度")
                 .setTitleImage(R.mipmap.ic_launcher_round));
 
         addItem(new SetVoiceView(getContext(), "音量")

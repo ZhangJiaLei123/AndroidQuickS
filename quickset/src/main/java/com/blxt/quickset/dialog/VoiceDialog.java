@@ -6,6 +6,7 @@ import android.widget.SeekBar;
 
 import androidx.annotation.NonNull;
 
+import com.blxt.quickset.R;
 import com.blxt.quickset.tools.Brightness;
 import com.blxt.quickset.tools.VoiceTools;
 
@@ -16,7 +17,7 @@ public class VoiceDialog extends BaseSeekbarDialog implements SeekBar.OnSeekBarC
 
 
     public VoiceDialog(@NonNull Context context) {
-        super(context);
+        super(context,  R.style.DialogTheme);
     }
 
 

@@ -27,8 +27,8 @@ public class BaseSeekbarDialog extends Dialog {
 
     SeekBarCallBack callBack = null;
 
-    public BaseSeekbarDialog(@NonNull Context context) {
-        super(context, R.style.DialogTheme);
+    public BaseSeekbarDialog(@NonNull Context context, int styleId) {
+        super(context, styleId);
     }
 
 

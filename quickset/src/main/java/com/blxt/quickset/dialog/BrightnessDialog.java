@@ -1,11 +1,12 @@
 package com.blxt.quickset.dialog;
 
-import android.content.Context;
+import android.app.Activity;
 import android.os.Bundle;
 import android.widget.SeekBar;
+import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 
+import com.blxt.quickset.R;
 import com.blxt.quickset.tools.Brightness;
 
 /**
@@ -13,9 +14,11 @@ import com.blxt.quickset.tools.Brightness;
  */
 public class BrightnessDialog extends BaseSeekbarDialog implements SeekBar.OnSeekBarChangeListener {
 
+    Activity activity;
 
-    public BrightnessDialog(@NonNull Context context) {
-        super(context);
+    public BrightnessDialog(Activity activity) {
+        super(activity,  R.style.DialogTheme2);
+        this.activity =  activity;
     }
 
 
@@ -29,17 +32,31 @@ public class BrightnessDialog extends BaseSeekbarDialog implements SeekBar.OnSee
 
     @Override
     protected void initUI(){
-         seekBar.setProgress(Brightness.getBrightness(getContext()));
-         seekBar.setOnSeekBarChangeListener(this);
+        int max = 255;
 
-         title.setText("亮度调节");
+        seekBar.setMax(max);
+        seekBar.setProgress(Brightness.getBrightness(getActivity()));
+        seekBar.setOnSeekBarChangeListener(this);
+
+        title.setText("亮度调节");
+    }
+
+    public void setValue(int value){
+        seekBar.setProgress(value);
     }
 
     @Override
     public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-        Brightness.setBrightness(getContext(), i);
-        if(callBack != null){
-            callBack.onProgressChanged(seekBar, Brightness.getBrightness(getContext()));
+        // 没有权限的话,就无法生效
+        boolean fal = Brightness.checkPermiss(getActivity());
+        if(fal){
+            Brightness.setBrightness(getContext(), i);
+            if(callBack != null){
+                callBack.onProgressChanged(seekBar, Brightness.getBrightness(getContext()));
+            }
+        }
+        else{
+            Toast.makeText(getContext(), "没有权限", Toast.LENGTH_LONG);
         }
     }
 
@@ -51,6 +68,10 @@ public class BrightnessDialog extends BaseSeekbarDialog implements SeekBar.OnSee
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
 
+    }
+
+    public Activity getActivity(){
+        return this.activity;
     }
 
 }

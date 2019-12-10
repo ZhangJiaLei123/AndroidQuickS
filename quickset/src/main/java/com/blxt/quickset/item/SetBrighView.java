@@ -1,6 +1,7 @@
 package com.blxt.quickset.item;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,10 +24,11 @@ public class SetBrighView extends BaseSetItemView  {
 
 
     private ImageView iv_right; // 右边箭头
+    Activity activity;
 
-
-    public SetBrighView(Context context, String title) {
-        super(context);
+    public SetBrighView(Activity activity, String title) {
+        super(activity);
+        this.activity = activity;
 
         instance = this;
         LayoutInflater.from(getContext()).inflate(R.layout._item_set__simple,this);
@@ -50,7 +52,7 @@ public class SetBrighView extends BaseSetItemView  {
                     fal = clickListener.onClickSetItem(instance);
                 }
                 if (fal){
-                    BrightnessDialog brightnessDialog = new BrightnessDialog(getContext());
+                    BrightnessDialog brightnessDialog = new BrightnessDialog(getActivity());
                     brightnessDialog.setBackCancelable(new BaseSeekbarDialog.SeekBarCallBack(){
 
                         @Override
@@ -71,4 +73,7 @@ public class SetBrighView extends BaseSetItemView  {
     }
 
 
+    public Activity getActivity(){
+        return activity;
+    }
 }
