@@ -10,8 +10,11 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.blxt.androidquicks.fragment.SettingFragment;
+import com.blxt.quickpermission.PermissionHelp;
+import com.blxt.quickset.dialog.BrightnessDialog;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -34,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         activity = this;
         SettingFragment settingFragment = SettingFragment.newInstance();
         changeFragment(settingFragment);
-
+        PermissionHelp.makeNoti(this);
         startActivity(new Intent(this, PermissionActivity.class));
     }
 
@@ -42,6 +45,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         activity = null;
+    }
+
+    public void onClickTest(View view){
+        BrightnessDialog brightnessDialog = new BrightnessDialog(this);
+        brightnessDialog.show();
     }
 
     private void changeFragment(Fragment fragment){

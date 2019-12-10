@@ -10,6 +10,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
+import android.view.View;
 import android.view.Window;
 import android.widget.Toast;
 
@@ -77,7 +78,7 @@ public class BasePermissionActivity extends Activity {
         if (numberPermiss <= 0 && superPermiss != null && superPermiss.length > 0){
             //由于不知道是否选择了允许所以需要再次判断
             if (permissionCallBack != null){
-                if(permissionCallBack.SupPermiss()){
+                if(permissionCallBack.supPermiss()){
                     myRequetPermission();
                 }
             }
@@ -88,8 +89,14 @@ public class BasePermissionActivity extends Activity {
         }
     }
 
+    public void onPermissApply(View view){
+        finish();
+    }
 
     long lastTime = 0;
+    /**
+     * 拦截Activity的finish
+     */
     @Override
     public void finish() {
         Calendar calendar = Calendar.getInstance();
@@ -111,6 +118,9 @@ public class BasePermissionActivity extends Activity {
        }
     }
 
+    /**
+     * 退出此Activity
+     */
     public void onSuperfinish(){
         boolean fal = true;
         if(permissionCallBack != null){
@@ -144,6 +154,24 @@ public class BasePermissionActivity extends Activity {
                     supNumberPermiss--;
                 }
             }
+            // 系统设置
+            if(s.equals(Manifest.permission.WRITE_SETTINGS)){
+                //申请android.permission.WRITE_SETTINGS权限的方式
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    //如果当前平台版本大于23平台
+                    if (!Settings.System.canWrite(this)) {
+                        //如果没有修改系统的权限这请求修改系统的权限
+                        Intent intent = new Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS);
+                        intent.setData(Uri.parse("package:" + getPackageName()));
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivityForResult(intent, 0);
+                    } else {
+                        //有了权限，你要做什么呢？具体的动作
+
+                    }
+                }
+            }
+
         }
         if(supNumberPermiss == 0 ){
             super.finish();
@@ -161,6 +189,9 @@ public class BasePermissionActivity extends Activity {
         for (PermissionInfo p : permissionInfo) {
             // 悬浮窗等特殊权限需要做特殊处理
             if(p.permission.equals(Manifest.permission.SYSTEM_ALERT_WINDOW)){
+                superPermisss.add(p.permission);
+            }
+            else if(p.equals(Manifest.permission.WRITE_SETTINGS)){
                 superPermisss.add(p.permission);
             }
             else{
@@ -209,60 +240,72 @@ public class BasePermissionActivity extends Activity {
                     // 选择不允许
                     if (!ActivityCompat.shouldShowRequestPermissionRationale(this, permissions[i])){//用户选择了禁止不再询问
 
-                        AlertDialog.Builder builder = new AlertDialog.Builder(BasePermissionActivity.this);
-                        builder.setTitle(title)
-                                .setMessage(message)
-                                .setIcon(titleIcoResID)
-                                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface arg0, int arg1) {
-                                        //("您点击了取消按钮");
-                                       // finish();
-                                    }
-                                })
-                                .setPositiveButton("去允许", new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int id) {
-                                        if (mDialog != null && mDialog.isShowing()) {
-                                            mDialog.dismiss();
+                        if(mDialog == null){
+                            AlertDialog.Builder builder = new AlertDialog.Builder(BasePermissionActivity.this);
+                            builder.setTitle(title)
+                                    .setMessage(message)
+                                    .setIcon(titleIcoResID)
+                                    .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface arg0, int arg1) {
+                                            //("您点击了取消按钮");
+                                            // finish();
+                                            mDialog = null;
                                         }
-                                        // 去权限申请页
-                                        Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                                        Uri uri = Uri.fromParts("package", getPackageName(), null);//注意就是"package",不用改成自己的包名
-                                        intent.setData(uri);
-                                        startActivityForResult(intent, NOT_NOTICE);
-                                    }
-                                });
-                        mDialog = builder.create();
-                        mDialog.setCanceledOnTouchOutside(false);
-                        mDialog.show();
+                                    })
+                                    .setPositiveButton("去允许", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            if (mDialog != null && mDialog.isShowing()) {
+                                                mDialog.dismiss();
+                                                mDialog = null;
+                                            }
+                                            // 去权限申请页
+                                            Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                                            Uri uri = Uri.fromParts("package", getPackageName(), null);//注意就是"package",不用改成自己的包名
+                                            intent.setData(uri);
+                                            startActivityForResult(intent, NOT_NOTICE);
+                                        }
+                                    });
+                            mDialog = builder.create();
+                            mDialog.setCanceledOnTouchOutside(false);
+                            mDialog.show();
+                        }
+
 
 
                     }else {//选择禁止
                         Log.i("BasePermissionActivity", "" + "权限" + permissions[0] + "申请失败");
-                        AlertDialog.Builder builder = new AlertDialog.Builder(BasePermissionActivity.this);
-                        builder.setTitle(title)
-                                .setMessage(message)
-                                .setIcon(titleIcoResID)
-                                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+
+                        if(alertDialog == null){
+                            AlertDialog.Builder builder = new AlertDialog.Builder(BasePermissionActivity.this);
+                            builder.setTitle(title)
+                                    .setMessage(message)
+                                    .setIcon(titleIcoResID)
+                                    .setNegativeButton("取消", new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface arg0, int arg1) {
                                             //("您点击了取消按钮");
                                             //finish();
+                                            alertDialog = null;
+
                                         }
                                     })
-                                .setPositiveButton("去允许", new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int id) {
-                                        if (alertDialog != null && alertDialog.isShowing()) {
-                                            alertDialog.dismiss();
+                                    .setPositiveButton("去允许", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            if (alertDialog != null && alertDialog.isShowing()) {
+                                                alertDialog.dismiss();
+                                                alertDialog = null;
+                                            }
+                                            // 再次申请
+                                            ActivityCompat.requestPermissions(BasePermissionActivity.this,
+                                                    new String[]{permissInfo.permission}, 1);
                                         }
-                                        // 再次申请
-                                        ActivityCompat.requestPermissions(BasePermissionActivity.this,
-                                                new String[]{permissInfo.permission}, 1);
-                                    }
-                                });
-                        alertDialog = builder.create();
-                        alertDialog.setCanceledOnTouchOutside(false);
-                        alertDialog.show();
+                                    });
+                            alertDialog = builder.create();
+                            alertDialog.setCanceledOnTouchOutside(false);
+                            alertDialog.show();
+                        }
+
                     }
 
                 }
@@ -296,7 +339,7 @@ public class BasePermissionActivity extends Activity {
          * 发现没有特殊权限
          * @return
          */
-        boolean SupPermiss();
+        boolean supPermiss();
 
         /**
          * 结束

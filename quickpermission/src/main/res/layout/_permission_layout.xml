@@ -1,20 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="bottom"
     android:layout_gravity="center"
-    android:gravity="center"
     style="@style/PermissionStyle"
     android:background="#3B636262">
 
-    <TextView
-        android:id="@+id/textView"
+    <Button
+        android:id="@+id/_btn_apply"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:layout_gravity="bottom"
+        android:layout_above="@+id/textView"
+        android:layout_gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:padding="10dp"
+        android:background="@drawable/btn_bottom_confirm_bg"
         android:gravity="center"
-        android:textColor="#690202"
-        android:text="此软件需要必要的权限才可正常工作,详情请参见用户协议" />
+        android:textColor="#B97304"
+        android:onClick="onPermissApply"
+        android:text="检查权限" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="0dp"
+        android:gravity="center"
+        android:text="此软件需要必要的权限才可正常工作,详情请参见用户协议"
+        android:textColor="#690202" />
+
+</RelativeLayout>

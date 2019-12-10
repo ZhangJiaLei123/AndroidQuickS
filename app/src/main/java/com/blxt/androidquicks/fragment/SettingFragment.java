@@ -7,11 +7,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.blxt.androidquicks.R;
-import com.blxt.setinglibrary.BaseSettingFragment;
-import com.blxt.setinglibrary.item.BaseSetItemView;
-import com.blxt.setinglibrary.item.SetItemView;
-import com.blxt.setinglibrary.item.SetItemViewSeparator;
-import com.blxt.setinglibrary.item.SetItemViewSw;
+import com.blxt.quickset.BaseSettingFragment;
+import com.blxt.quickset.dialog.BrightnessDialog;
+import com.blxt.quickset.dialog.VoiceDialog;
+import com.blxt.quickset.item.BaseSetItemView;
+import com.blxt.quickset.item.SetBrighView;
+import com.blxt.quickset.item.SetItemView;
+import com.blxt.quickset.item.SetItemViewSeparator;
+import com.blxt.quickset.item.SetItemViewSw;
+import com.blxt.quickset.item.SetVoiceView;
 
 public class SettingFragment extends BaseSettingFragment implements BaseSetItemView.OnClickListenerCallBack {
 
@@ -41,6 +45,12 @@ public class SettingFragment extends BaseSettingFragment implements BaseSetItemV
                 .setTitleImage(R.mipmap.ic_launcher_round)
                 .setHint("需要权限"));
         addItem(new SetItemViewSw(getContext(), "固定通知")
+                .setTitleImage(R.mipmap.ic_launcher_round));
+
+        addItem(new SetBrighView(getContext(), "亮度")
+                .setTitleImage(R.mipmap.ic_launcher_round));
+
+        addItem(new SetVoiceView(getContext(), "音量")
                 .setTitleImage(R.mipmap.ic_launcher_round));
         // 分组
         addItem(new SetItemViewSeparator(getContext(), "分享"));
@@ -74,6 +84,14 @@ public class SettingFragment extends BaseSettingFragment implements BaseSetItemV
             if (title.equals("恢复出厂模式")){
                 baseSetItemView.setHint("下次启动时,将重新运行引导页");
             }
+          //  else if(title.equals("亮度")){
+          //      BrightnessDialog brightnessDialog = new BrightnessDialog(getActivity());
+          //      brightnessDialog.show();
+          //  }
+          //  else if(title.equals("音量")){
+          //      VoiceDialog brightnessDialog = new VoiceDialog(getActivity());
+          //      brightnessDialog.show();
+          //  }
         }
         return true;
     }

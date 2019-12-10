@@ -1,4 +1,4 @@
-package com.blxt.setinglibrary.item;
+package com.blxt.quickset.item;
 
 
 import android.content.Context;

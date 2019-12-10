@@ -1,4 +1,4 @@
-package com.blxt.setinglibrary.viewmodel;
+package com.blxt.quickset.viewmodel;
 
 import android.view.View;
 import android.widget.ImageView;
@@ -8,7 +8,7 @@ import android.widget.TextView;
 import androidx.lifecycle.ViewModel;
 
 import com.blxt.quickset.R;
-import com.blxt.setinglibrary.item.BaseSetItemView;
+import com.blxt.quickset.item.BaseSetItemView;
 
 import java.util.ArrayList;
 import java.util.List;

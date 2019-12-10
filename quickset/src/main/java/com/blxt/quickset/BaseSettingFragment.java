@@ -1,4 +1,4 @@
-package com.blxt.setinglibrary;
+package com.blxt.quickset;
 
 import android.annotation.SuppressLint;
 import androidx.fragment.app.Fragment;
@@ -9,9 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-import com.blxt.quickset.R;
-import com.blxt.setinglibrary.item.BaseSetItemView;
-import com.blxt.setinglibrary.viewmodel.SettingViewModel;
+import com.blxt.quickset.item.BaseSetItemView;
+import com.blxt.quickset.viewmodel.SettingViewModel;
 
 
 /**

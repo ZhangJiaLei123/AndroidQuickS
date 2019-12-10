@@ -30,16 +30,19 @@ public class PermissionActivity extends BasePermissionActivity implements BasePe
         PermissionInfo p2 = new PermissionInfo(Manifest.permission.CALL_PHONE, "电话");
         PermissionInfo p3 = new PermissionInfo(Manifest.permission.CAMERA, "相机");
         PermissionInfo p4 = new PermissionInfo(Manifest.permission.SYSTEM_ALERT_WINDOW, "悬浮窗");
+        PermissionInfo p5 = new PermissionInfo(Manifest.permission.WRITE_SETTINGS, "屏幕亮度");
+
+        PermissionInfo p6 = new PermissionInfo(Manifest.permission.MODIFY_AUDIO_SETTINGS, "音量");
 
         setpPermissionCallBack(this);
 
-         if(myRequetPermission(p1, p2, p3, p4)){
+         if(myRequetPermission(p1, p2, p3, p4, p5, p6)){
 
          }
     }
 
     @Override
-    public boolean SupPermiss() {
+    public boolean supPermiss() {
         return false;
     }
 
