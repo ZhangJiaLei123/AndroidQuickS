@@ -2,7 +2,6 @@ package com.blxt.quickset.item;
 
 
 import android.app.Activity;
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -11,7 +10,6 @@ import android.widget.SeekBar;
 import com.blxt.quickset.R;
 import com.blxt.quickset.dialog.BaseSeekbarDialog;
 import com.blxt.quickset.dialog.BrightnessDialog;
-import com.blxt.quickset.dialog.VoiceDialog;
 import com.blxt.quickset.tools.Brightness;
 import com.blxt.quickset.tools.VoiceTools;
 

@@ -7,8 +7,7 @@ import android.widget.SeekBar;
 import androidx.annotation.NonNull;
 
 import com.blxt.quickset.R;
-import com.blxt.quickset.tools.Brightness;
-import com.blxt.quickset.tools.VoiceTools;
+import com.blxt.quicktools.system.VoiceTools;
 
 /**
  * 声音设置对话框

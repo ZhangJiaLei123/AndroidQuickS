@@ -13,6 +13,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
     }
 
     buildTypes {
@@ -22,33 +23,25 @@ android {
         }
     }
 
-    lintOptions {
-        abortOnError false
-    }
-
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:support-v4:29.0.0'
-    implementation 'com.android.support:appcompat-v7:29.0.0'
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
-    compile project(path: ':quicktools')
-}
-//  gradlew :quickset:uploadArchives
 
+    testImplementation 'junit:junit:4.12'
+
+}
+
+//  gradlew :quicktools:uploadArchives
 uploadArchives {
     repositories {
         mavenDeployer {
             def mavenDirPath = file('E:\\MyComputer\\SoftData\\Maven\\maven_Repository')
             repository(url: "file://${mavenDirPath.absolutePath}")
             pom.project {
-                name 'quickset'
+                name 'quicktools'
                 groupId 'blxt'
-                artifactId 'quickset'
+                artifactId 'quicktools'
                 version '1.0.0'
                 packaging 'aar'
 

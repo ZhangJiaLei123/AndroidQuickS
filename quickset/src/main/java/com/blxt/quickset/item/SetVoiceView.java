@@ -2,7 +2,6 @@ package com.blxt.quickset.item;
 
 
 import android.content.Context;
-import android.speech.tts.Voice;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;

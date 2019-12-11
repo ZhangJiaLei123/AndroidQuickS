@@ -1,4 +1,4 @@
-package com.blxt.quickset.tools;
+package com.blxt.quicktools.system;
 
 import android.app.Activity;
 import android.content.ContentResolver;

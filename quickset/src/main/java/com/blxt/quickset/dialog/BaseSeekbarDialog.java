@@ -12,7 +12,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 import com.blxt.quickset.R;
-import com.blxt.quickset.tools.Brightness;
 
 /**
  * 精度条设置对话框

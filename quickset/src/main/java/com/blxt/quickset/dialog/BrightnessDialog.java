@@ -7,7 +7,7 @@ import android.widget.Toast;
 
 
 import com.blxt.quickset.R;
-import com.blxt.quickset.tools.Brightness;
+import com.blxt.quicktools.system.Brightness;
 
 /**
  * 亮度设置对话框
