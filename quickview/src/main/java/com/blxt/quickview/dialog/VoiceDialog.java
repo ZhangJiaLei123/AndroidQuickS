@@ -1,13 +1,12 @@
-package com.blxt.quickset.dialog;
+package com.blxt.quickview.dialog;
 
 import android.content.Context;
 import android.os.Bundle;
 import android.widget.SeekBar;
 
-import androidx.annotation.NonNull;
-
-import com.blxt.quickset.R;
 import com.blxt.quicktools.system.VoiceTools;
+import com.blxt.quickview.R;
+
 
 /**
  * 声音设置对话框
@@ -15,7 +14,7 @@ import com.blxt.quicktools.system.VoiceTools;
 public class VoiceDialog extends BaseSeekbarDialog implements SeekBar.OnSeekBarChangeListener {
 
 
-    public VoiceDialog(@NonNull Context context) {
+    public VoiceDialog( Context context) {
         super(context,  R.style.DialogTheme);
     }
 

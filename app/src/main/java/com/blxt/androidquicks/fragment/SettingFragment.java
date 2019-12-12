@@ -8,14 +8,13 @@ import android.view.ViewGroup;
 
 import com.blxt.androidquicks.R;
 import com.blxt.quickset.BaseSettingFragment;
-import com.blxt.quickset.dialog.BrightnessDialog;
-import com.blxt.quickset.dialog.VoiceDialog;
-import com.blxt.quickset.item.BaseSetItemView;
-import com.blxt.quickset.item.SetBrighView;
-import com.blxt.quickset.item.SetItemView;
-import com.blxt.quickset.item.SetItemViewSeparator;
-import com.blxt.quickset.item.SetItemViewSw;
-import com.blxt.quickset.item.SetVoiceView;
+import com.blxt.quickview.item.BaseSetItemView;
+import com.blxt.quickview.item.SetBrighView;
+import com.blxt.quickview.item.SetItemView;
+import com.blxt.quickview.item.SetItemViewChoose;
+import com.blxt.quickview.item.SetItemViewSeparator;
+import com.blxt.quickview.item.SetItemViewSw;
+import com.blxt.quickview.item.SetVoiceView;
 
 public class SettingFragment extends BaseSettingFragment implements BaseSetItemView.OnClickListenerCallBack {
 
@@ -51,6 +50,13 @@ public class SettingFragment extends BaseSettingFragment implements BaseSetItemV
                 .setTitleImage(R.mipmap.ic_launcher_round));
 
         addItem(new SetVoiceView(getContext(), "音量")
+                .setTitleImage(R.mipmap.ic_launcher_round));
+
+
+        // 分组
+        addItem(new SetItemViewSeparator(getContext(), null));
+
+        addItem(new SetItemViewChoose(getContext(), "息屏", "关闭").setChooseItems(new String[]{"关闭", "30s", "5min"})
                 .setTitleImage(R.mipmap.ic_launcher_round));
         // 分组
         addItem(new SetItemViewSeparator(getContext(), "分享"));

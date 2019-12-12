@@ -9,8 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-import com.blxt.quickset.item.BaseSetItemView;
 import com.blxt.quickset.viewmodel.SettingViewModel;
+import com.blxt.quickview.item.BaseSetItemView;
 
 
 /**

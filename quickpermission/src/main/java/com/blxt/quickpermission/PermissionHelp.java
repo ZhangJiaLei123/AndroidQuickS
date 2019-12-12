@@ -1,5 +1,6 @@
 package com.blxt.quickpermission;
 
+import android.app.Activity;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
@@ -60,6 +61,36 @@ public class PermissionHelp {
         return true;
     }
 
+    /**
+     * 系统设置权
+     * @param activity
+     * @return
+     */
+    public static boolean makeSysyemSet(Activity activity){
+        //申请android.permission.WRITE_SETTINGS权限的方式
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            //如果当前平台版本大于23平台
+            if (!Settings.System.canWrite(activity)) {
+                //如果没有修改系统的权限这请求修改系统的权限
+                Intent intent = new Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS);
+                intent.setData(Uri.parse("package:" + activity.getPackageName()));
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                activity.startActivityForResult(intent, 0);
+                return false;
+            } else {
+                //有了权限，你要做什么呢？具体的动作
+                return true;
+
+            }
+        }
+        return true;
+    }
+
+    /**
+     * 检查权限
+     * @param context
+     * @return
+     */
     public static boolean isPermissionOpen(Context context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             return NotificationManagerCompat.from(context).getImportance() != NotificationManager.IMPORTANCE_NONE;
@@ -67,6 +98,10 @@ public class PermissionHelp {
         return NotificationManagerCompat.from(context).areNotificationsEnabled();
     }
 
+    /**
+     * 通知栏使用权
+     * @param context
+     */
     public static void openPermissionSetting(Context context) {
         try {
             Intent localIntent = new Intent();

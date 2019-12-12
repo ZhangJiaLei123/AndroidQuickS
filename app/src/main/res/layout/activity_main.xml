@@ -9,11 +9,11 @@
     android:orientation="vertical"
     android:background="#DCDAD7D7">
 
-    <Button
+    <com.blxt.quickview.button.TextBotton
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="onClickTest"
+        android:textColor="#E60606"
         android:text="测试" />
 
     <LinearLayout

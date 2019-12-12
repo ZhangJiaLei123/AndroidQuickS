@@ -1,4 +1,4 @@
-package com.blxt.quickset.item;
+package com.blxt.quickview.item;
 
 
 import android.content.Context;
@@ -6,8 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.blxt.quickset.R;
-
+import com.blxt.quickview.R;
 
 /**
  * 设置页面的item
@@ -18,8 +17,11 @@ public class SetItemView extends BaseSetItemView {
 
     private ImageView iv_right; // 右边箭头
 
+    public SetItemView(Context context, String title){
+        this(context, title, "");
+    }
 
-    public SetItemView(Context context, String title) {
+    public SetItemView(Context context, String title, String value) {
         super(context);
 
         instance = this;
@@ -33,6 +35,7 @@ public class SetItemView extends BaseSetItemView {
 
         setTitle(title);
         initview();
+        intiValue(value);
 
         this.setOnClickListener(new OnClickListener() {
             @Override
@@ -44,6 +47,18 @@ public class SetItemView extends BaseSetItemView {
             }
         });
     }
+
+    protected void intiValue(String value){
+        String tmp = getValue();
+        if(tmp == null || tmp.length() == 0){
+            saveValue(value);
+        }
+        else{
+            value = tmp;
+        }
+        tv_hint.setText(value);
+    }
+
 
 
     public void setEnabled(boolean isbootom){

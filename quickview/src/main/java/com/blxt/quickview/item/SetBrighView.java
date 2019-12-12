@@ -1,30 +1,31 @@
-package com.blxt.quickset.item;
+package com.blxt.quickview.item;
 
 
-import android.content.Context;
+import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 
-import com.blxt.quickset.R;
-import com.blxt.quickset.dialog.BaseSeekbarDialog;
-import com.blxt.quickset.dialog.VoiceDialog;
-import com.blxt.quickset.tools.VoiceTools;
+import com.blxt.quicktools.system.Brightness;
+import com.blxt.quickview.R;
+import com.blxt.quickview.dialog.BaseSeekbarDialog;
+import com.blxt.quickview.dialog.BrightnessDialog;
 
 
 /**
- * 设置声音
+ * 设置亮度
  * @author Zhang
  */
-public class SetVoiceView extends BaseSetItemView  {
+public class SetBrighView extends BaseSetItemView  {
 
 
     private ImageView iv_right; // 右边箭头
+    Activity activity;
 
-
-    public SetVoiceView(Context context, String title) {
-        super(context);
+    public SetBrighView(Activity activity, String title) {
+        super(activity);
+        this.activity = activity;
 
         instance = this;
         LayoutInflater.from(getContext()).inflate(R.layout._item_set__simple,this);
@@ -38,7 +39,7 @@ public class SetVoiceView extends BaseSetItemView  {
         setTitle(title);
         initview();
 
-        tv_hint.setText("" + VoiceTools.getVolume(getContext()));
+        tv_hint.setText("" + Brightness.getBrightness(getContext()));
 
         this.setOnClickListener(new OnClickListener() {
             @Override
@@ -48,15 +49,15 @@ public class SetVoiceView extends BaseSetItemView  {
                     fal = clickListener.onClickSetItem(instance);
                 }
                 if (fal){
-                    VoiceDialog voiceDialog = new VoiceDialog(getContext());
-                    voiceDialog.setBackCancelable(new BaseSeekbarDialog.SeekBarCallBack(){
+                    BrightnessDialog brightnessDialog = new BrightnessDialog(getActivity());
+                    brightnessDialog.setBackCancelable(new BaseSeekbarDialog.SeekBarCallBack(){
 
                         @Override
                         public void onProgressChanged(SeekBar seekBar, int i) {
                             tv_hint.setText("" + i);
                         }
                     });
-                    voiceDialog.show();
+                    brightnessDialog.show();
                 }
 
             }
@@ -69,4 +70,7 @@ public class SetVoiceView extends BaseSetItemView  {
     }
 
 
+    public Activity getActivity(){
+        return activity;
+    }
 }

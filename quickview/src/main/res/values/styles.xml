@@ -48,4 +48,11 @@
         <!-- 还可以加入一些弹出和退出的动画 (lan)-->
     </style>
 
+    <!--控制dialog进出动画-->
+    <style name="dialog_animation" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/dialog_enter</item>
+        <!-- 进入时的动画 -->
+        <item name="android:windowExitAnimation">@anim/dialog_exit</item>
+        <!-- 退出时的动画 -->
+    </style>
 </resources>

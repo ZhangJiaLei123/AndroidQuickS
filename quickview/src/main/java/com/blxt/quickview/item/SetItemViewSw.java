@@ -1,4 +1,4 @@
-package com.blxt.quickset.item;
+package com.blxt.quickview.item;
 
 
 import android.content.Context;
@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 
-import com.blxt.quickset.R;
+import com.blxt.quickview.R;
 
 
 /**
@@ -18,8 +18,12 @@ public class SetItemViewSw extends BaseSetItemView implements CompoundButton.OnC
 
     private Switch aSwitch; // 右边箭头
 
-
     public SetItemViewSw(Context context, String title) {
+        this(context, title, "false");
+    }
+
+
+    public SetItemViewSw(Context context, String title, String hint) {
         super(context);
 
         instance = this;
@@ -36,6 +40,7 @@ public class SetItemViewSw extends BaseSetItemView implements CompoundButton.OnC
         setTextOff("关");
         setTextOn("开");
         initview();
+        intiValue(hint);
 
         String value = getValue();
         if(value.equals("true") || value.equals("TRUE")){
@@ -48,6 +53,25 @@ public class SetItemViewSw extends BaseSetItemView implements CompoundButton.OnC
         addListener();
 
     }
+
+
+    public void intiValue(String value){
+        String tmp = getValue();
+        if(tmp == null || tmp.length() == 0){
+            tmp = "true";
+        }
+
+        if(tmp.equals("true") || tmp.equals("TRUE")){
+            aSwitch.setChecked(true);
+            value = "true";
+        }
+        else{
+            aSwitch.setChecked(false);
+            value = "false";
+        }
+        saveValue(value);
+    }
+
 
     private void addListener(){
         aSwitch.setOnCheckedChangeListener(this);

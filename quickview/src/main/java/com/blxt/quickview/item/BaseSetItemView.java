@@ -1,4 +1,4 @@
-package com.blxt.quickset.item;
+package com.blxt.quickview.item;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -183,7 +183,7 @@ public class BaseSetItemView extends LinearLayout {
 
     public String getValue(){
 
-        return sharedPreferences.getString(getKey(), "null");
+        return sharedPreferences.getString(getKey(), "");
     }
 
     public BaseSetItemView setSpKey(String key){

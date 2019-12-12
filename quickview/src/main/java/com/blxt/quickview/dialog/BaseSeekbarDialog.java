@@ -1,4 +1,4 @@
-package com.blxt.quickset.dialog;
+package com.blxt.quickview.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -9,9 +9,8 @@ import android.view.WindowManager;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
+import com.blxt.quickview.R;
 
-import com.blxt.quickset.R;
 
 /**
  * 精度条设置对话框
@@ -26,7 +25,7 @@ public class BaseSeekbarDialog extends Dialog {
 
     SeekBarCallBack callBack = null;
 
-    public BaseSeekbarDialog(@NonNull Context context, int styleId) {
+    public BaseSeekbarDialog(Context context, int styleId) {
         super(context, styleId);
     }
 

@@ -44,7 +44,7 @@ public class WellComeViewModel extends ViewModel implements RoundProgressBar.Pro
     /**
      * 随机的欢迎页图片
      */
-    private static int[] imagesWellcom ={};
+    private static int[] imagesWellcom = {};
 
 
     AnimatorSet set;
@@ -56,19 +56,19 @@ public class WellComeViewModel extends ViewModel implements RoundProgressBar.Pro
      */
     WellComeListener listener;
 
-    public WellComeViewModel(View view){
+    public WellComeViewModel(View view) {
         this.view = view;
         findViewById();
     }
 
-    public void init(){
+    public void init() {
         initView();
     }
 
     /**
      * 初始化Id
      */
-    private void findViewById(){
+    private void findViewById() {
 
         mIVEntry = view.findViewById(R.id.iv_entry);
         spikBar = view.findViewById(R.id.spikBar);
@@ -85,24 +85,21 @@ public class WellComeViewModel extends ViewModel implements RoundProgressBar.Pro
     /**
      * 初始化视图
      */
-    private void initView(){
+    private void initView() {
 
         Random random = new Random(SystemClock.elapsedRealtime());//SystemClock.elapsedRealtime() 从开机到现在的毫秒数（手机睡眠(sleep)的时间也包括在内）
         mIVEntry.setImageResource(imagesWellcom[random.nextInt(imagesWellcom.length)]);
 
         Observable.timer(1000, TimeUnit.MILLISECONDS)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Action1<Long>()
-                {
+                .subscribe(new Action1<Long>() {
 
                     @Override
-                    public void call(Long aLong)
-                    {
+                    public void call(Long aLong) {
                         // 1s后,才允许点击
-                        if(BaseWelcomeActivity.isSpikWithoutTime){
+                        if (BaseWelcomeActivity.isSpikWithoutTime) {
                             spikBar.setEnabled(true);
-                        }
-                        else{
+                        } else {
                             spikBar.setEnabled(false);
                         }
                         // 开始动画
@@ -123,13 +120,11 @@ public class WellComeViewModel extends ViewModel implements RoundProgressBar.Pro
         set.setDuration(ANIM_TIME).play(animatorX).with(animatorY);
         set.start();
 
-        set.addListener(new AnimatorListenerAdapter()
-        {
+        set.addListener(new AnimatorListenerAdapter() {
             @Override
-            public void onAnimationEnd(Animator animation)
-            {
+            public void onAnimationEnd(Animator animation) {
                 // 动画结束
-                if(listener != null){
+                if (listener != null) {
                     listener.onAnimFinish();
                     //Log.i("WellComeViewModel","动画结束");
                 }
@@ -142,12 +137,11 @@ public class WellComeViewModel extends ViewModel implements RoundProgressBar.Pro
      * 结束,释放动画资源
      */
     public void finish() {
-        if(set != null )
-        {
+        if (set != null) {
             set.cancel();
             set = null;
         }
-        if (spikBar != null){
+        if (spikBar != null) {
             spikBar.pause();
             spikBar.destroy();
             spikBar = null;
@@ -158,23 +152,26 @@ public class WellComeViewModel extends ViewModel implements RoundProgressBar.Pro
 
     /**
      * 设置启动图片资源ID
+     *
      * @param imagesWellcom
      */
-    public void setImagesWellcom(int[] imagesWellcom){
+    public void setImagesWellcom(int[] imagesWellcom) {
         WellComeViewModel.imagesWellcom = imagesWellcom;
     }
 
 
     /**
      * 设置允许点跳过按钮
+     *
      * @param b
      */
-    public void setEnabledSpik(boolean b){
+    public void setEnabledSpik(boolean b) {
         spikBar.setEnabled(b);
     }
 
     /**
      * 设置监听回调
+     *
      * @param wellComeListener
      */
     public void setProgressChangeListener(WellComeListener wellComeListener) {
@@ -191,44 +188,47 @@ public class WellComeViewModel extends ViewModel implements RoundProgressBar.Pro
 
     /**
      * 设置标题
+     *
      * @param resId
      */
-    public void setWellcomTitle(int resId){
+    public void setWellcomTitle(int resId) {
         getWellcomTitle().setText(resId);
     }
 
-    public void setWellcomTitle(String resId){
+    public void setWellcomTitle(String resId) {
         getWellcomTitle().setText(resId);
     }
 
     /**
      * 设置底部Tips
+     *
      * @param resId
      */
-    public void setWellcomButtomTips(int resId){
+    public void setWellcomButtomTips(int resId) {
         getWellcomButtomTips().setText(resId);
     }
-    public void setWellcomButtomTips(String resId){
+
+    public void setWellcomButtomTips(String resId) {
         getWellcomButtomTips().setText(resId);
     }
 
     /**
      * 设置底部图标
+     *
      * @param resID
      */
-    public void setWellcomLogo(int resID){
+    public void setWellcomLogo(int resID) {
         getWellcomLogo().setBackgroundResource(resID);
     }
 
     /**
      * 获取预留的自定义FrameLayout
+     *
      * @return
      */
-    public FrameLayout getFrameLayout(){
+    public FrameLayout getFrameLayout() {
         return wellcomFramelayout;
     }
-
-
 
 
     @Override

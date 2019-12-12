@@ -40,7 +40,7 @@ dependencies {
     implementation project(path: ':quickwelcome')
     implementation project(path: ':quickview')
     implementation project(path: ':quickset')
-    compile project(path: ':quickpermission')
+    implementation project(path: ':quickpermission')
 
     // implementation 'com.qfxl:roundProgressBar:1.1.1'
 }

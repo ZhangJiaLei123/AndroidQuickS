@@ -8,7 +8,7 @@ import android.widget.TextView;
 import androidx.lifecycle.ViewModel;
 
 import com.blxt.quickset.R;
-import com.blxt.quickset.item.BaseSetItemView;
+import com.blxt.quickview.item.BaseSetItemView;
 
 import java.util.ArrayList;
 import java.util.List;

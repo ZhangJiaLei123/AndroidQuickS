@@ -1,13 +1,13 @@
-package com.blxt.quickset.dialog;
+package com.blxt.quickview.dialog;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.SeekBar;
 import android.widget.Toast;
 
-
-import com.blxt.quickset.R;
 import com.blxt.quicktools.system.Brightness;
+import com.blxt.quickview.R;
+
 
 /**
  * 亮度设置对话框
