@@ -9,6 +9,13 @@
     android:orientation="vertical"
     android:background="#DCDAD7D7">
 
+
+    <com.blxt.quickview.inputeditext.PwdInputEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_margin="50dp"/>
+
     <com.blxt.quickview.button.TextBotton
         android:id="@+id/button"
         android:layout_width="match_parent"

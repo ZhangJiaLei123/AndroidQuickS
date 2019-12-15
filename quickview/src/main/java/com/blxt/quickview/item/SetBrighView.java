@@ -28,7 +28,7 @@ public class SetBrighView extends BaseSetItemView  {
         this.activity = activity;
 
         instance = this;
-        LayoutInflater.from(getContext()).inflate(R.layout._item_set__simple,this);
+        LayoutInflater.from(getContext()).inflate(R.layout.__item_set__simple,this);
 
         iv_bottom =findViewById(R.id._item_bottom);
         iv_logo =findViewById(R.id._item_title_ic);

@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AndroidQuickS.iml" filepath="$PROJECT_DIR$/AndroidQuickS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/QuickTime/QuickTime.iml" filepath="$PROJECT_DIR$/QuickTime/QuickTime.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/quickpermission/quickpermission.iml" filepath="$PROJECT_DIR$/quickpermission/quickpermission.iml" />
       <module fileurl="file://$PROJECT_DIR$/quickset/quickset.iml" filepath="$PROJECT_DIR$/quickset/quickset.iml" />

@@ -70,7 +70,7 @@ public class ActionSheetDialog {
 
     public ActionSheetDialog builder() {
         View view = LayoutInflater.from(context).inflate(
-                R.layout._action_sheet_, null);
+                R.layout.__action_sheet_, null);
 
         view.setMinimumWidth(display.getWidth());
 
@@ -168,24 +168,24 @@ public class ActionSheetDialog {
 
             if (size == 1) {
                 if (showTitle) {
-                    textView.setBackgroundResource(R.drawable.selector_actionsheet_bottom);
+                    textView.setBackgroundResource(R.drawable.__selector_actionsheet_bottom);
                 } else {
-                    textView.setBackgroundResource(R.drawable.selector_actionsheet_single);
+                    textView.setBackgroundResource(R.drawable.__selector_actionsheet_single);
                 }
             } else {
                 if (showTitle) {
                     if (i >= 1 && i < size) {
-                        textView.setBackgroundResource(R.drawable.selector_actionsheet_middle);
+                        textView.setBackgroundResource(R.drawable.__selector_actionsheet_middle);
                     } else {
-                        textView.setBackgroundResource(R.drawable.selector_actionsheet_bottom);
+                        textView.setBackgroundResource(R.drawable.__selector_actionsheet_bottom);
                     }
                 } else {
                     if (i == 1) {
-                        textView.setBackgroundResource(R.drawable.selector_actionsheet_top);
+                        textView.setBackgroundResource(R.drawable.__selector_actionsheet_top);
                     } else if (i < size) {
-                        textView.setBackgroundResource(R.drawable.selector_actionsheet_middle);
+                        textView.setBackgroundResource(R.drawable.__selector_actionsheet_middle);
                     } else {
-                        textView.setBackgroundResource(R.drawable.selector_actionsheet_bottom);
+                        textView.setBackgroundResource(R.drawable.__selector_actionsheet_bottom);
                     }
                 }
             }

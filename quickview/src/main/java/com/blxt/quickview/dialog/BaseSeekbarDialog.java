@@ -33,7 +33,7 @@ public class BaseSeekbarDialog extends Dialog {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout._dialog_brightness);
+        setContentView(R.layout.__dialog_brightness);
 
 
         title = findViewById(R.id._dialog_title);

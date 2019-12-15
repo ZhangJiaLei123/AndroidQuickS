@@ -17,7 +17,7 @@ public class BrightnessDialog extends BaseSeekbarDialog implements SeekBar.OnSee
     Activity activity;
 
     public BrightnessDialog(Activity activity) {
-        super(activity,  R.style.DialogTheme2);
+        super(activity,  R.style.BrightnessDialog);
         this.activity =  activity;
     }
 

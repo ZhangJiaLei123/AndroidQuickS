@@ -56,9 +56,9 @@ public class SetItemViewChoose extends SetItemView {
                 .setCallBack(new ActionSheetDialog.DialogCallBack() {
                     @Override
                     public void OnDismiss(Object obj) {
-                        int index = (int)obj;
+                        chooseId = (int)obj;
 
-                        String res = chooseItems[index - 1];
+                        String res = chooseItems[chooseId - 1];
                         saveValue(res);
                         setHint(res);
                         if(clickListener != null){

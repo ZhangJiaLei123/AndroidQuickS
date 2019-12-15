@@ -3,7 +3,6 @@ package com.blxt.quickview.button;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
 import android.util.AttributeSet;
 import android.widget.Button;
 
@@ -17,8 +16,8 @@ public class TextBotton extends Button {
     int textColorOn= getResources().getColor(R.color.btn_text_on);
     int textColorOff = getResources().getColor(R.color.btn_text_off);
 
-    int resIdOn = R.drawable.roll;
-    int resIdOff = R.drawable.roll_off;
+    int resIdOn = R.drawable.__roll;
+    int resIdOff = R.drawable.__roll_off;
 
     private boolean isCheck = false;
 

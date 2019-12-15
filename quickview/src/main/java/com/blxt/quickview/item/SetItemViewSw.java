@@ -27,7 +27,7 @@ public class SetItemViewSw extends BaseSetItemView implements CompoundButton.OnC
         super(context);
 
         instance = this;
-        LayoutInflater.from(getContext()).inflate(R.layout._item_set__sw,this);
+        LayoutInflater.from(getContext()).inflate(R.layout.__item_set__sw,this);
 
         iv_bottom =findViewById(R.id._item_bottom);
         iv_logo =findViewById(R.id._item_title_ic);

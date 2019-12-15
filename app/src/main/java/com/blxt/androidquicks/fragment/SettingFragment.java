@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import com.blxt.androidquicks.R;
 import com.blxt.quickset.BaseSettingFragment;
 import com.blxt.quickview.item.BaseSetItemView;
+import com.blxt.quickview.item.ListItemUserWithBtn;
 import com.blxt.quickview.item.SetBrighView;
 import com.blxt.quickview.item.SetItemView;
 import com.blxt.quickview.item.SetItemViewChoose;
@@ -40,6 +41,14 @@ public class SettingFragment extends BaseSettingFragment implements BaseSetItemV
 
     private void initItems(){
 
+        SetItemView setItemView =  (SetItemView)new SetItemView(getContext(), "分享")
+                .setTitleImage(R.mipmap.ic_launcher_round)
+                .setHint("分享安装连接");
+        setItemView.getTv_title().setTextSize(24);
+        setItemView.getTv_hint().setTextSize(16);
+        setItemView.setPadding(5, 10 , 5, 10);
+     //   setItemView.setLogoSize(90, 90);
+
         addItem(new SetItemViewSw(getContext(), "开机自启")
                 .setTitleImage(R.mipmap.ic_launcher_round)
                 .setHint("需要权限"));
@@ -54,16 +63,14 @@ public class SettingFragment extends BaseSettingFragment implements BaseSetItemV
 
 
         // 分组
-        addItem(new SetItemViewSeparator(getContext(), null));
+        addItem(new SetItemViewSeparator(getContext(), null, R.color.btn_text_on));
 
         addItem(new SetItemViewChoose(getContext(), "息屏", "关闭").setChooseItems(new String[]{"关闭", "30s", "5min"})
                 .setTitleImage(R.mipmap.ic_launcher_round));
         // 分组
         addItem(new SetItemViewSeparator(getContext(), "分享"));
 
-        addItem(new SetItemView(getContext(), "分享")
-                .setTitleImage(R.mipmap.ic_launcher_round)
-                .setHint("分享安装连接"));
+        addItem(setItemView);
         addItem(new SetItemView(getContext(), "支持")
                 .setTitleImage(R.mipmap.ic_launcher_round)
                 .setHint("去评分"));
@@ -77,6 +84,9 @@ public class SettingFragment extends BaseSettingFragment implements BaseSetItemV
                 .setTitleImage(R.mipmap.ic_launcher_round)
                 .setHint("重新运行引导页")
                 .setSpKey("首次运行"));
+
+        addItem(new ListItemUserWithBtn(getContext()));
+
     }
 
 

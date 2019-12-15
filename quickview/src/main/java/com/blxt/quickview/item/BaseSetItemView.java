@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ import java.util.List;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public class BaseSetItemView extends LinearLayout {
+public class BaseSetItemView extends RelativeLayout {
 
     protected static SharedPreferences sharedPreferences = null;
 
@@ -126,6 +127,17 @@ public class BaseSetItemView extends LinearLayout {
         return this;
     }
 
+    public TextView getTv_title() {
+        return tv_title;
+    }
+
+    public TextView getTv_hint() {
+        return tv_hint;
+    }
+
+    public ImageView getIv_logo() {
+        return iv_logo;
+    }
 
     /**
      * 添加监听

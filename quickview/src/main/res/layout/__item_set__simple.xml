@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:layout_gravity="center_vertical"
+    android:gravity="center_vertical"
+    android:background="#FFFFFF">
+
+
+    <ImageView
+        android:id="@+id/_item_title_ic"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="1dp"
+        android:layout_marginLeft="1dp" />
+
+    <TextView
+        android:id="@+id/_item_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerVertical="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_toEndOf="@+id/_item_title_ic"
+        android:layout_toRightOf="@+id/_item_title_ic"
+        android:gravity="center_vertical"
+        android:text="设置项"
+        android:textColor="#050000"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/_item_tip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_toStartOf="@+id/_item_iright"
+        android:layout_toLeftOf="@+id/_item_iright"
+        android:gravity="center"
+        android:text="提示"
+        android:textColor="#8A8686"
+        android:textSize="16dp" />
+
+    <ImageView
+        android:id="@+id/_item_iright"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/__ic_left"  />
+
+</RelativeLayout>

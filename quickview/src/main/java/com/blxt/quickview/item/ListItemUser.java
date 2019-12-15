@@ -1,0 +1,127 @@
+package com.blxt.quickview.item;
+
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.util.AttributeSet;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.Button;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import com.blxt.quickview.R;
+
+public class ListItemUser extends RelativeLayout implements View.OnClickListener {
+    // 确定键
+    public static final int BTN_OK = 1;
+    // 取消键
+    public static final int BTN_CANCEL = 2;
+
+    ItemUserCallback callback;
+
+    View view = null;
+    int index = 0;
+    // 按键响应
+    int btnId = -1;
+
+    private TextView tvNumber;
+    private TextView tvUsername;
+    private TextView tvUserTip;
+    private TextView tvUserId;
+    private Button btnOk;
+    private Button btnCancel;
+
+    public ListItemUser(Context context) {
+        super(context);
+        initUI();
+    }
+
+    public ListItemUser(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        initUI();
+    }
+
+    public ListItemUser(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        initUI();
+    }
+
+    @SuppressLint("NewApi")
+    public ListItemUser(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
+        initUI();
+    }
+
+
+    private void initUI(){
+        if(view != null){
+            return ;
+        }
+
+        view = LayoutInflater.from(getContext()).inflate(R.layout.__item_list_user,this);
+
+        tvNumber = view.findViewById(R.id.tv_number);
+        tvUsername = view.findViewById(R.id.tv_username);
+        tvUserTip = view.findViewById(R.id.tv_user_tip);
+        tvUserId = view.findViewById(R.id.tv_user_id);
+        btnOk = view.findViewById(R.id.btn_ok);
+        btnCancel = view.findViewById(R.id.btn_cancel);
+
+        btnOk.setOnClickListener(this);
+        btnCancel.setOnClickListener(this);
+
+        btnOk.setVisibility(GONE);
+        btnCancel.setVisibility(GONE);
+        tvUserTip.setVisibility(GONE);
+    }
+
+    public ListItemUser setIndex(int index){
+        tvNumber.setText("" + index);
+        this.index = index;
+        if(index > 1000){
+            tvNumber.setTextSize(24);
+        }
+
+        return this;
+    }
+
+
+    public ListItemUser setName(String name){
+        tvUsername.setText(name);
+        return this;
+    }
+
+    public ListItemUser setUserId(String userID){
+        tvUserId.setText(userID);
+        return this;
+    }
+
+
+    @Override
+    public void onClick(View view) {
+
+        int id = view.getId();
+
+        if (id == R.id.btn_ok) {
+            btnId = BTN_OK;
+        } else if (id == R.id.btn_cancel) {
+            btnId = BTN_CANCEL;
+        }
+
+        if(this.callback != null){
+            callback.OnClick(this);
+        }
+
+        btnId = -1;
+    }
+
+
+    public ListItemUser setCallback(ItemUserCallback callback) {
+        this.callback = callback;
+        return this;
+    }
+
+    public interface ItemUserCallback{
+        void OnClick(ListItemUser userItem);
+    }
+}
