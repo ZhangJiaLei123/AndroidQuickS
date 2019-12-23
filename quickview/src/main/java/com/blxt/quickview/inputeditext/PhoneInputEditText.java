@@ -105,7 +105,10 @@ public class PhoneInputEditText extends LinearLayout {
     }
 
     public String getText(){
-        return editText.getText().toString();
+        if(editText.getText() == null){
+            return "";
+        }
+        return editText.getText().toString().replace(" ", "");
     }
 
     public void setText(int str){
@@ -121,5 +124,10 @@ public class PhoneInputEditText extends LinearLayout {
     }
     public void setHint(int str){
         editText.setHint(str);
+    }
+
+
+    public void setEnable(boolean b){
+        editText.setEnabled(b);
     }
 }

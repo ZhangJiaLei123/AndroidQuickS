@@ -82,6 +82,9 @@ public class SearchView extends RelativeLayout implements View.OnClickListener {
 
 
     public String getText(){
+        if(edtSearch.getText() == null){
+            return "";
+        }
         return edtSearch.getText().toString();
     }
 
@@ -115,4 +118,6 @@ public class SearchView extends RelativeLayout implements View.OnClickListener {
     public interface OnSearchClick{
         void onSearchClick(SearchView searchView);
     }
+
+
 }

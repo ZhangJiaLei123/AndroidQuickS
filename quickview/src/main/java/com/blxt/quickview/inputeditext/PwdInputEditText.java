@@ -20,7 +20,7 @@ public class PwdInputEditText extends LinearLayout {
 
     private View view = null;
     private ImageView IvLog;
-    private EditText EtInput;
+    private EditText editText;
     private ImageView IvEye;
     boolean isEyes = false;
 
@@ -50,9 +50,9 @@ public class PwdInputEditText extends LinearLayout {
         if(view == null){
             view = LayoutInflater.from(getContext()).inflate(R.layout.___input_user_pwd,this);
             IvLog = view.findViewById(R.id.__iv_log);
-            EtInput = view.findViewById(R.id.__et_input);
+            editText = view.findViewById(R.id.__et_input);
             IvEye = view.findViewById(R.id._iv_eye);
-            EtInput.clearFocus();
+            editText.clearFocus();
             isEyes = false;
             setPwdModel(isEyes);
             IvEye.setOnClickListener(new OnClickListener() {
@@ -63,37 +63,45 @@ public class PwdInputEditText extends LinearLayout {
                 }
             });
         }
-      //  EtInput.clearFocus();
+      //  editText.clearFocus();
     }
 
     private void setPwdModel(Boolean fal){
         if(fal){
             IvEye.setBackgroundResource(R.drawable.__eye_on);
-            EtInput.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+            editText.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
         }
         else{
             IvEye.setBackgroundResource(R.drawable.__eye_off);
-            EtInput.setTransformationMethod(PasswordTransformationMethod.getInstance());
+            editText.setTransformationMethod(PasswordTransformationMethod.getInstance());
         }
     }
 
 
     public String getText(){
-        return EtInput.getText().toString();
+        if(editText.getText() == null){
+            return "";
+        }
+        return editText.getText().toString();
     }
 
     public void setText(int str){
-        EtInput.setText(str);
+        editText.setText(str);
     }
 
     public void setText(String str){
-        EtInput.setText(str);
+        editText.setText(str);
     }
 
     public void setHint(int str){
-        EtInput.setHint(str);
+        editText.setHint(str);
     }
     public void setHint(String str){
-        EtInput.setHint(str);
+        editText.setHint(str);
     }
+
+    public void setEnable(boolean b){
+        editText.setEnabled(b);
+    }
+
 }

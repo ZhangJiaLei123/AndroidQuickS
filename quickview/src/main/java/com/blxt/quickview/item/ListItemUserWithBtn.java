@@ -87,7 +87,7 @@ public class ListItemUserWithBtn extends RelativeLayout implements View.OnClickL
     }
 
 
-    public ListItemUserWithBtn setName(String name){
+    public ListItemUserWithBtn setUserName(String name){
         tvUsername.setText(name);
         return this;
     }
@@ -97,6 +97,26 @@ public class ListItemUserWithBtn extends RelativeLayout implements View.OnClickL
         return this;
     }
 
+    public String getUserName() {
+        if(tvUsername.getText() == null){
+            return "";
+        }
+        return tvUsername.getText().toString();
+    }
+
+    public String getIndex() {
+        if(tvNumber.getText() == null){
+            return "";
+        }
+        return tvNumber.getText().toString();
+    }
+
+    public String getUserId() {
+        if(tvUserId.getText() == null){
+            return "";
+        }
+        return tvUserId.getText().toString();
+    }
 
     @Override
     public void onClick(View view) {
@@ -116,6 +136,9 @@ public class ListItemUserWithBtn extends RelativeLayout implements View.OnClickL
         btnId = -1;
     }
 
+    public int getBtnId(){
+        return btnId;
+    }
 
     public ListItemUserWithBtn setCallback(ItemUserCallback callback) {
         this.callback = callback;

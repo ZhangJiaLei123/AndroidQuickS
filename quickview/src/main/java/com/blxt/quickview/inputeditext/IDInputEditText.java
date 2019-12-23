@@ -62,6 +62,9 @@ public class IDInputEditText extends LinearLayout {
     }
 
     public String getText(){
+        if(editText.getText() == null){
+            return "";
+        }
         return editText.getText().toString();
     }
 
@@ -79,4 +82,9 @@ public class IDInputEditText extends LinearLayout {
     public void setHint(int str){
         editText.setHint(str);
     }
+
+    public void setEnable(boolean b){
+        editText.setEnabled(b);
+    }
+
 }

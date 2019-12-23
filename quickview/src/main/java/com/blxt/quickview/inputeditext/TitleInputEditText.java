@@ -12,9 +12,9 @@ import android.widget.LinearLayout;
 import com.blxt.quickview.R;
 
 /**
- * 用户名输入EditText
+ * title输入EditText
  */
-public class UserInputEditText extends LinearLayout {
+public class TitleInputEditText extends LinearLayout {
 
     private ImageView IvLog;
     private EditText editText;
@@ -22,23 +22,23 @@ public class UserInputEditText extends LinearLayout {
 
     View view = null;
 
-    public UserInputEditText(Context context) {
+    public TitleInputEditText(Context context) {
         super(context);
         initUI();
     }
 
-    public UserInputEditText(Context context, AttributeSet attrs) {
+    public TitleInputEditText(Context context, AttributeSet attrs) {
         super(context, attrs);
         initUI();
     }
 
-    public UserInputEditText(Context context, AttributeSet attrs, int defStyleAttr) {
+    public TitleInputEditText(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initUI();
     }
 
     @SuppressLint("NewApi")
-    public UserInputEditText(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public TitleInputEditText(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         initUI();
     }
@@ -48,7 +48,7 @@ public class UserInputEditText extends LinearLayout {
         if(view == null){
             view = LayoutInflater.from(getContext()).inflate(R.layout.___input_user_name,this);
             IvLog = view.findViewById(R.id.__iv_log);
-            IvLog.setBackgroundResource(R.drawable.__ic_input_user);
+            IvLog.setBackgroundResource(R.mipmap.__ic_h);
             editText = view.findViewById(R.id.__et_input);
             editText.clearFocus();
         }
@@ -73,4 +73,9 @@ public class UserInputEditText extends LinearLayout {
     public void setEnable(boolean b){
         editText.setEnabled(b);
     }
+
+    public void setHint(String str){
+        editText.setHint(str);
+    }
+
 }

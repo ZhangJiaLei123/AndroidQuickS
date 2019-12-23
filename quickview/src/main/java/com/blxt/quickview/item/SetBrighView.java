@@ -55,6 +55,7 @@ public class SetBrighView extends BaseSetItemView  {
                         @Override
                         public void onProgressChanged(SeekBar seekBar, int i) {
                             tv_hint.setText("" + i);
+                            saveValue("" + i);
                         }
                     });
                     brightnessDialog.show();
