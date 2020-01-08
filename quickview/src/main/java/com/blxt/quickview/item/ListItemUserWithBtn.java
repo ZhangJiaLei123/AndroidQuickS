@@ -97,6 +97,21 @@ public class ListItemUserWithBtn extends RelativeLayout implements View.OnClickL
         return this;
     }
 
+    public ListItemUserWithBtn setTips(String tips){
+        tvUserTip.setText(tips);
+        return this;
+    }
+
+    public ListItemUserWithBtn setTipsBackgroundResource(int resId){
+        tvUserTip.setBackgroundResource(resId);
+        return this;
+    }
+
+    public ListItemUserWithBtn setTipsColor(int resId){
+        tvUserTip.setTextColor(resId);
+        return this;
+    }
+
     public String getUserName() {
         if(tvUsername.getText() == null){
             return "";
@@ -116,6 +131,14 @@ public class ListItemUserWithBtn extends RelativeLayout implements View.OnClickL
             return "";
         }
         return tvUserId.getText().toString();
+    }
+
+    public Button getBtnOk() {
+        return btnOk;
+    }
+
+    public Button getBtnCancel() {
+        return btnCancel;
     }
 
     @Override

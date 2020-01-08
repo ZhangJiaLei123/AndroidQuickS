@@ -37,7 +37,7 @@ public class BaseSetItemView extends RelativeLayout {
     private String spKey = null;
     public BaseSetItemView(Context context) {
         super(context);
-
+        instance = this;
         sharedPreferences = getSP(context);
 
     }
