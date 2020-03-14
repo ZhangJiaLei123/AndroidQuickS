@@ -7,7 +7,7 @@ buildscript {
         
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.3'
+        classpath 'com.android.tools.build:gradle:3.6.1'
         classpath 'com.novoda:bintray-release:0.8.1'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -20,7 +20,11 @@ allprojects {
         jcenter()
         //本地Maven仓库地址
         maven {
-            url 'file://E:\\MyComputer\\SoftData\\Maven\\maven_Repository'
+            url 'file://E://ASWorkSpace//openxu//OXChart//repository'
+        }
+
+        maven {
+            url 'http://zhangjialei.cn:8083/repository/maven-releases/'
         }
     }
 }

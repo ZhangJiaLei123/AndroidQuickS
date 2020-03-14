@@ -38,14 +38,29 @@ dependencies {
    // api rootProject.ext.dependencies.fragment
 }
 //  gradlew :quickpermission:uploadArchives
+//打包main目录下代码和资源的 task
+task androidSourcesJar(type: Jar) {
+    classifier = 'sources'
+    from android.sourceSets.main.java.srcDirs
+}
+//配置需要上传到maven仓库的文件
+artifacts {
+    archives androidSourcesJar
+}
 uploadArchives {
     repositories {
+        // 上传到服务器
         mavenDeployer {
-            def mavenDirPath = file('E:\\MyComputer\\SoftData\\Maven\\maven_Repository')
-            repository(url: "file://${mavenDirPath.absolutePath}")
+            repository(url: "http://zhangjialei.cn:8083/repository/maven-releases/") {
+                // nexus账号的用户名和密码，我这里没用默认的admin
+                authentication(userName: "admin", password: "15256632121a.")
+            }
+            // 上传本地
+//      def mavenDirPath = file('E:\\ProgramData\\Maven\\maven-repository')
+//      repository(url: "file://${mavenDirPath.absolutePath}")
             pom.project {
                 name 'quickpermission'
-                groupId 'blxt'
+                groupId 'com.blxt.Qandroid'
                 artifactId 'quickpermission'
                 version '1.0.1'
                 packaging 'aar'
