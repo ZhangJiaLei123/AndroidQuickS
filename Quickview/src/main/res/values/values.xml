@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="btn_text_off">#ffA5A5A5</color>
+    <color name="btn_text_on">#ff034194</color>
+    <color name="item_group_divider">#eeeeee</color>
+    <color name="item_group_edt">#666666</color>
+    <color name="item_group_title">#1D1D1D</color>
+    <color name="white">#ffffff</color>
+    <string name="app_name">QuickView</string>
+    <style name="BrightnessDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:title">@null</item>
+        <item name="android:windowActionBar">@null</item>
+        <item name="android:actionBarDivider">@null</item>
+        
+        <item name="android:windowFrame">@null</item>
+        
+        <item name="android:windowIsFloating">true</item>
+        
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:backgroundDimEnabled">false</item>
+
+    </style>
+    <style name="DialogTheme" parent="@android:style/Theme.Dialog">
+        <item name="android:title">@null</item>
+        <item name="android:windowActionBar">@null</item>
+        <item name="android:actionBarDivider">@null</item>
+        
+        <item name="android:windowFrame">@null</item>
+        
+        <item name="android:windowIsFloating">true</item>
+        
+        <item name="android:windowIsTranslucent">true</item>
+        
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        
+        <item name="android:windowBackground">@android:color/transparent</item>
+        
+        <item name="android:backgroundDimEnabled">true</item>
+        
+        <item name="android:backgroundDimAmount">0.5</item>
+    </style>
+    <style name="MyDialog" parent="@android:style/Theme.Holo.Dialog">
+        
+        <item name="android:windowFrame">@null</item>
+        
+        <item name="android:windowIsFloating">true</item>
+        
+        <item name="android:windowNoTitle">true</item>
+        
+        <item name="android:windowBackground">@android:color/transparent</item>
+        
+    </style>
+    <style name="dialog_animation" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/__dialog_enter</item>
+        
+        <item name="android:windowExitAnimation">@anim/__dialog_exit</item>
+        
+    </style>
+    <declare-styleable name="EditItem">
+        <!--标题的文字-->
+        <attr format="string" name="title"/>
+        <!--标题的字体大小-->
+        <attr format="dimension" name="titleSize"/>
+        <!--标题的字体颜色-->
+        <attr format="color" name="titleColor"/>
+        <!--输入框的内容-->
+<!--        <attr name="edt_content" format="string" />-->
+        <!--输入框的字体大小-->
+<!--        <attr name="edt_text_size" format="dimension" />-->
+        <!--输入框的字体颜色-->
+<!--        <attr name="edt_text_color" format="color" />-->
+        <!--输入框提示的内容-->
+<!--        <attr name="hint" format="string" />-->
+        <!--输入框的提示字体的字体颜色-->
+        <attr format="color" name="hintColor"/>
+        <!--输入框是否可以编辑内容-->
+        <attr format="boolean" name="isEditable"/>
+        <!--向的右箭头图标是否可见-->
+        <attr format="boolean" name="jt_visible"/>
+        <!--item布局的内边距-->
+        <attr format="dimension" name="paddingLeft"/>
+        <attr format="dimension" name="paddingRight"/>
+        <attr format="dimension" name="paddingTop"/>
+        <attr format="dimension" name="paddingBottom"/>
+
+        <attr format="reference" name="drawable_left"/>
+        <attr format="reference" name="drawable_right"/>
+        <attr format="color" name="line_color"/>
+        <attr format="integer" name="line_height"/>
+
+
+        <!--        图片-->
+    </declare-styleable>
+    <declare-styleable name="RounImageView">
+        <!--其他一切不规则图案-->
+        <attr name="baselib_other_type">
+            <enum name="STAR" value="1"/>
+            <enum name="BEAR" value="2"/>
+            <enum name="HEXAGON" value="3"/>
+        </attr>
+        <!--顺时针1234四个角，四个角可分为1,2,3,4,12,13,14,23,24,34,123,124,134,234,1234十五种情况-->
+        <attr name="baselib_corner_type">
+            <enum name="ALL" value="1234"/>
+            <enum name="TOP_LEFT" value="1"/>
+            <enum name="TOP_RIGHT" value="2"/>
+            <enum name="BOTTOM_RIGHT" value="3"/>
+            <enum name="BOTTOM_LEFT" value="4"/>
+            <enum name="TOP_LEFT_TOP_RIGHT" value="12"/>
+            <enum name="TOP_LEFT_BOTTOM_RIGHT" value="13"/>
+            <enum name="TOP_LEFT_BOTTOM_LEFT" value="14"/>
+            <enum name="TOP_RIGHT_BOTTOM_RIGHT" value="23"/>
+            <enum name="TOP_RIGHT_BOTTOM_LEFT" value="24"/>
+            <enum name="BOTTOM_RIGHT_BOTTOM_LEFT" value="34"/>
+            <enum name="TOP_LEFT_TOP_RIGHT_BOTTOM_RIGHT" value="123"/>
+            <enum name="TOP_LEFT_TOP_RIGHT_BOTTOM_LEFT" value="124"/>
+            <enum name="TOP_LEFT_BOTTOM_RIGHT_BOTTOM_LEFT" value="134"/>
+            <enum name="TOP_RIGHT_BOTTOM_RIGHT_BOTTOM_LEFT" value="234"/>
+        </attr>
+        <!--椭圆-->
+        <attr format="boolean" name="baselib_is_oval"/>
+        <!--是否是圆形图片-->
+        <attr format="boolean" name="baselib_is_circle"/>
+
+        <!--=====================上面是互斥的属性，下面的可以与上面的共存=====================-->
+        <!--是否带边框-->
+        <attr format="boolean" name="baselib_has_border"/>
+        <!--边框颜色-->
+        <attr format="color|reference" name="baselib_border_color"/>
+        <!--边框宽度-->
+        <attr format="dimension" name="baselib_border_width"/>
+        <!--圆角的度数（代表所有角，不再单独针对部分圆角的情况提供某一个角的度数）-->
+        <attr format="dimension" name="baselib_corner_radius"/>
+        <!--是否高斯模糊-->
+        <attr format="boolean" name="baselib_is_blur"/>
+        <!--高斯模糊半径-->
+        <attr format="float" name="baselib_blur_radius"/>
+        <!--当图片为空的时候，默认颜色-->
+        <attr format="color|reference" name="baselib_default_color"/>
+    </declare-styleable>
+    <declare-styleable name="RoundProgressBar">
+        <!--外弧的宽度-->
+        <attr format="dimension|reference" name="rpb_sweepStrokeWidth"/>
+        <!--外弧的颜色-->
+        <attr format="color|reference" name="rpb_sweepStrokeColor"/>
+        <!--外弧的起始位置默认是-90-->
+        <attr format="integer" name="rpb_sweepStartAngle"/>
+        <!--中间的文本-->
+        <attr format="string|reference" name="rpb_centerText"/>
+        <!--中间文本的大小-->
+        <attr format="dimension|reference" name="rpb_centerTextSize"/>
+        <!--中间文本的颜色-->
+        <attr format="color|reference" name="rpb_centerTextColor"/>
+        <!--中间的背景颜色-->
+        <attr format="color|reference" name="rpb_centerBackgroundColor"/>
+        <!--倒计时的总时间(毫秒)-->
+        <attr format="integer" name="rpb_countDownTimeInMillis"/>
+        <!--是否自动开始计时-->
+        <attr format="boolean" name="rpb_autoStart"/>
+        <attr format="enum" name="rpb_progressDirection">
+            <enum name="forward" value="0"/><!--正-->
+            <enum name="reverse" value="1"/><!--反-->
+        </attr>
+        <!--是否绘制外层wrapper-->
+        <attr format="boolean" name="rpb_drawOutsideWrapper"/>
+        <!--外層wrapper的顔色-->
+        <attr format="color|reference" name="rpb_outsideWrapperColor"/>
+        <!--是否支持end to start-->
+        <attr format="boolean" name="rpb_supportEndToStart"/>
+    </declare-styleable>
+    <declare-styleable name="RowProgressBar">
+        <attr format="color" name="rowProgressBarColor"/>
+        <attr format="color" name="rowUnProgressBarColor"/>
+        <attr format="color" name="updataAPPTextColor"/>
+        <attr format="dimension" name="updataAPPBarHeight"/>
+        <attr format="integer" name="updataAPPMax"/>
+        <attr format="integer" name="updataAPPProgress"/>
+        <attr format="string" name="updataAPPSuffix"/>
+        <attr format="string" name="updataAPPPrefix"/>
+        <attr format="boolean" name="updataAPPTextVisibility"/>
+    </declare-styleable>
+    <declare-styleable name="WatchBoard">
+        
+        <attr format="dimension" name="wb_padding"/>
+        
+        <attr format="dimension" name="wb_text_size"/>
+        
+        <attr format="dimension" name="wb_hour_pointer_width"/>
+        
+        <attr format="dimension" name="wb_minute_pointer_width"/>
+        
+        <attr format="dimension" name="wb_second_pointer_width"/>
+        
+        <attr format="dimension" name="wb_pointer_corner_radius"/>
+        
+        <attr format="dimension" name="wb_pointer_end_length"/>
+        
+        <attr format="color" name="wb_scale_long_color"/>
+        
+        <attr format="color" name="wb_scale_short_color"/>
+        
+        <attr format="color" name="wb_hour_pointer_color"/>
+        
+        <attr format="color" name="wb_minute_pointer_color"/>
+        
+        <attr format="color" name="wb_second_pointer_color"/>
+    </declare-styleable>
+</resources>

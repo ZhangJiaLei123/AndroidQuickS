@@ -1,53 +1,58 @@
-package com.blxt.quickview.item;
+/*    */ package com.blxt.quickview.item;
+/*    */ 
+/*    */ import android.content.Context;
+/*    */ import android.view.LayoutInflater;
+/*    */ import android.view.ViewGroup;
+/*    */ import android.widget.LinearLayout;
+/*    */ import android.widget.TextView;
+/*    */ import com.blxt.quickview.R;
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ public class SetItemViewSeparator
+/*    */   extends LinearLayout
+/*    */ {
+/*    */   private TextView ItemTitle;
+/*    */   
+/*    */   public SetItemViewSeparator(Context context, String title, int colorResId) {
+/* 27 */     super(context);
+/* 28 */     LayoutInflater.from(getContext()).inflate(R.layout.__item_set_separator, (ViewGroup)this);
+/*    */     
+/* 30 */     this.ItemTitle = (TextView)findViewById(R.id._item_title);
+/* 31 */     if (title != null) {
+/* 32 */       this.ItemTitle.setText(title);
+/*    */     } else {
+/*    */       
+/* 35 */       this.ItemTitle.setVisibility(8);
+/* 36 */       removeAllViews();
+/*    */       
+/* 38 */       LinearLayout.LayoutParams layout_923 = new LinearLayout.LayoutParams(-1, 1);
+/* 39 */       layout_923.leftMargin = 50;
+/* 40 */       layout_923.rightMargin = 50;
+/*    */       
+/* 42 */       setLayoutParams((ViewGroup.LayoutParams)layout_923);
+/*    */     } 
+/*    */     
+/* 45 */     if (colorResId != 0) {
+/* 46 */       setBackgroundResource(colorResId);
+/*    */     }
+/*    */   }
+/*    */ 
+/*    */   
+/* 51 */   public SetItemViewSeparator(Context context, String title) { this(context, title, 0); }
+/*    */ }
 
 
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-
-import com.blxt.quickview.R;
-
-
-/**
- * 设置页面的item 的分隔符
- * @author Zhang
+/* Location:              E:\Documents\workspace\Work4HeNeng\Project\QBox\QboxManage\app\libs\quickview-1.0.5.aar!\classes.jar!\com\blxt\quickview\item\SetItemViewSeparator.class
+ * Java compiler version: 7 (51.0)
+ * JD-Core Version:       1.1.2
  */
-public class SetItemViewSeparator extends LinearLayout {
-
-    private TextView ItemTitle;
-
-    /**
-     *
-     * @param context
-     * @param title       标题
-     * @param colorResId  背景颜色
-     */
-    public SetItemViewSeparator(Context context, String title, int colorResId) {
-        super(context);
-        LayoutInflater.from(getContext()).inflate(R.layout.__item_set_separator,this);
-
-        ItemTitle = findViewById(R.id._item_title);
-        if(title != null){
-            ItemTitle.setText(title);
-        }
-        else{ // 移除所有视图
-            ItemTitle.setVisibility(GONE);
-            removeAllViews();
-
-            LayoutParams layout_923 = new LayoutParams(LayoutParams.MATCH_PARENT,1);
-            layout_923.leftMargin = 50;
-            layout_923.rightMargin = 50;
-
-            setLayoutParams(layout_923);
-        }
-
-        if(colorResId != 0){
-            setBackgroundResource(colorResId);
-        }
-    }
-
-    public SetItemViewSeparator(Context context, String title) {
-        this(context, title, 0);
-    }
-}
