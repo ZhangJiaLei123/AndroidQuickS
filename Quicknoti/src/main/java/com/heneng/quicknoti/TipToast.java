@@ -1,150 +1,120 @@
 package com.heneng.quicknoti;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.os.Handler;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Toast;
 
-/**
- * Toast封装类
- * @author peter
- *
- */
-public class TipToast {
-	static TipToast instance;
-	Context context;
-	TipToastCallBack callBack;
+public class TipToast
+{
+  Context context;
+  Handler handler;
+  public static final int GRAVITY_TOP = 1;
+  public static final int GRAVITY_BOTTOM = 2;
+  public static final int GRAVITY_CENTER = 3;
+  public static final int TIME_SHORT = 0;
+  public static final int TIME_LONG = 1;
 
-	public static final int GRAVITY_TOP = 1;
-	public static final int GRAVITY_BOTTOM = 2;
-	public static final int GRAVITY_CENTER = 3;
-
-	public static final int TIME_SHORT = Toast.LENGTH_SHORT;
-	public static final int TIME_LONG = Toast.LENGTH_LONG;
+  public static TipToast newInstance(Context context, Handler callBack) { return new TipToast(context, callBack); }
 
 
-	public static TipToast newInstance(Context context,TipToastCallBack tipToastCallBack){
-		if(instance == null){
-			instance = new TipToast(context, tipToastCallBack);
-		}
-		return instance;
-	}
+  private TipToast(Context context, Handler handler) {
+    this.context = context;
+    this.handler = handler;
+  }
 
-	public static TipToast getInstance(){
-		return instance;
-	}
-
-	private TipToast(Context context, TipToastCallBack tipToastCallBack){
-		this.context = context;
-		callBack = tipToastCallBack;
-	}
-
-	/**
-	 * 默认Toast
-	 * @param tag      标签
-	 * @param args     消息
-	 */
-	public void showToast(Object tag,Object... args)
-	{
-		showToast(TipToast.GRAVITY_BOTTOM, tag, args);
-	}
-
-	/**
-	 * 线程中的Toast
-	 * 	//  TipToast.showToast(getApplicationContext(),handler,(String) msg.obj);
-	 * @param handler
-	 * @param tag
-	 * @param args
-	 */
-	public void showToast(final Handler handler, final Object tag, final Object... args)
-	{
-
-		// 新启动一个子线程
-		new Thread(new Runnable() {
-			@Override
-			public void run() {
-				// 使用post方式加到主线程的消息队列中
-				handler.post(new Runnable() {
-					@Override
-					public void run() {
-						showToast(TipToast.GRAVITY_BOTTOM, tag, args);
-					}
-				});
-			}
-		}).start();
-
-	}
-
-	/**
-	 * 设置位置的Toast
-	 * @param state
-	 * @param tag
-	 * @param args
-	 */
-	public void showToast( int state, Object tag, Object... args) {
-
-		showToast(0, state, tag, args);
-	}
-
-	/**
-	 * 自定义视图的Toast
-	 * @param resourceId
-	 * @param state
-	 * @param tag
-	 * @param args
-	 */
-	public void showToast( int resourceId, int state, Object tag, Object... args) {
-
-		String info = "";
-		for(int i = 0; i < args.length - 1; i++){
-			info += args[i] + ",";
-		}
-		info += args[args.length - 1] ;
-
-		if(callBack != null){
-			callBack.onToast(tag, info);
-		}
-
-		Toast mToast = null;
-
-		if(resourceId != 0){ // 自定义的UI
-			LayoutInflater inflater = LayoutInflater.from(context);
-			View toastView = inflater.inflate(resourceId, null);
-			toastView.setBackgroundColor(Color.TRANSPARENT);
-			mToast = new Toast(context);
-			mToast.setView(toastView);
-		}
-		else{ // 默认UI
-			mToast = Toast.makeText(context, info, Toast.LENGTH_SHORT);
-		}
+  public TipToast(Context context) {
+    this.context = context;
+    this.handler = null;
+  }
 
 
-		if(state == TipToast.GRAVITY_TOP)
-		{
-			mToast.setGravity(Gravity.BOTTOM|Gravity.TOP, 0, 100);
-		}
-		else if(state == TipToast.GRAVITY_BOTTOM)
-		{
-			mToast.setGravity(Gravity.BOTTOM|Gravity.BOTTOM, 0, 100);
-		}
-		else if (state == TipToast.GRAVITY_CENTER)
-		{
-			mToast.setGravity(Gravity.BOTTOM|Gravity.CENTER, 0, 100);
-		}
+  public TipToast setHandel(Handler mHandler) {
+    this.handler = mHandler;
+    return this;
+  }
 
-		mToast.show();
-	}
+
+  public void showToast(Object tag, Object... args) { showToast(2, tag, args); }
+
+
+
+  public void showToast(final Handler handler, final Object tag,final Object... args) { (new Thread(new Runnable()
+        {
+          public void run()
+          {
+            handler.post(new Runnable()
+                {
+                  public void run() {
+                    TipToast.this.showToast(2, tag, args);
+                  }
+                });
+          }
+        })).start(); }
+
+
+  public void showToast(int state, Object tag, Object... args) { showToast(0, state, tag, args); }
+
+
+  public void showToast(final int resourceId, final int state, final Object tag,final Object... args) {
+    if (this.handler == null) {
+      m_showToast(resourceId, state, tag, args);
+    }
+    else {
+
+      (new Thread(new Runnable()
+          {
+            public void run()
+            {
+              TipToast.this.handler.post(new Runnable()
+                  {
+                    public void run() {
+                      TipToast.this.m_showToast(resourceId, state, tag, args);
+                    }
+                  });
+            }
+          })).start();
+    }
+  }
 
 
 
 
-	public interface TipToastCallBack{
-		void onToast(Object tag, String msg);
-	}
+  private void m_showToast(int resourceId, int state, Object tag, Object... args) {
+    String info = "";
+    for (int i = 0; i < args.length - 1; i++) {
+      info = info + args[i] + ",";
+    }
+    info = info + args[args.length - 1];
+
+    Toast mToast = null;
+
+    if (resourceId != 0) {
+      LayoutInflater inflater = LayoutInflater.from(this.context);
+      View toastView = inflater.inflate(resourceId, null);
+      toastView.setBackgroundColor(0);
+      mToast = new Toast(this.context);
+      mToast.setView(toastView);
+    } else {
+
+      mToast = Toast.makeText(this.context, info, TIME_SHORT);
+    }
 
 
+    if (state == 1) {
+
+      mToast.setGravity(112, 0, 100);
+    }
+    else if (state == 2) {
+
+      mToast.setGravity(80, 0, 100);
+    }
+    else if (state == 3) {
+
+      mToast.setGravity(81, 0, 100);
+    }
+
+    mToast.show();
+  }
 }
-
