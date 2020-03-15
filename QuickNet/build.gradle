@@ -3,9 +3,6 @@ apply plugin: 'maven'
 
 android {
     compileSdkVersion 29
-    buildToolsVersion "29.0.1"
-
-
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 29
@@ -51,29 +48,13 @@ uploadArchives {
                 // nexus账号的用户名和密码，我这里没用默认的admin
                 authentication(userName: "admin", password: "15256632121a.")
             }
-            // 上传本地
-//      def mavenDirPath = file('E:\\ProgramData\\Maven\\maven-repository')
-//      repository(url: "file://${mavenDirPath.absolutePath}")
+
             pom.project {
                 name 'quicknet'
                 groupId 'com.blxt.Qandroid'
                 artifactId 'quicknet'
                 version '1.0.0'
                 packaging 'aar'
-
-                licenses {
-                    license {
-                        name 'The Apache Software License, Version 2.0'
-                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                        distribution 'repo'
-                    }
-                }
-                developers {
-                    developer {
-                        id 'blxt'
-                        name 'blxt'
-                    }
-                }
             }
         }
     }
