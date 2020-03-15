@@ -1,0 +1,65 @@
+apply plugin: 'com.android.library'
+apply plugin: 'maven'
+
+android {
+    compileSdkVersion 29
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    implementation 'com.blxt.qJava:qfile:1.0.0'
+
+}
+
+//  gradlew :quicklog:uploadArchives
+//打包main目录下代码和资源的 task
+task androidSourcesJar(type: Jar) {
+    classifier = 'sources'
+    from android.sourceSets.main.java.srcDirs
+}
+//配置需要上传到maven仓库的文件
+artifacts {
+    archives androidSourcesJar
+}
+uploadArchives {
+    repositories {
+        // 上传到服务器
+        mavenDeployer {
+            repository(url: "http://zhangjialei.cn:8083/repository/maven-releases/") {
+                // nexus账号的用户名和密码，我这里没用默认的admin
+                authentication(userName: "admin", password: "15256632121a.")
+            }
+            pom.project {
+                name 'quicklog'
+                groupId 'com.blxt.Qandroid'  // 唯一标识（通常为模块包名，也可以任意）
+                artifactId 'quicklog'
+                version '1.0.0'
+                packaging 'aar'
+
+            }
+        }
+    }
+}

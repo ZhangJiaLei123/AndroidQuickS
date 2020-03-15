@@ -2,31 +2,24 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/AndroidQuickS.iml" filepath="$PROJECT_DIR$/AndroidQuickS.iml" />
-      <module fileurl="file://$PROJECT_DIR$/QuickTime/AndroidQuickS-QuickTime.iml" filepath="$PROJECT_DIR$/QuickTime/AndroidQuickS-QuickTime.iml" group="AndroidQuickS/QuickTime" />
+      <module fileurl="file://$PROJECT_DIR$/AndroidQuickS.iml" filepath="$PROJECT_DIR$/AndroidQuickS.iml" group="AndroidQuickS" />
       <module fileurl="file://$PROJECT_DIR$/app/AndroidQuickS-app.iml" filepath="$PROJECT_DIR$/app/AndroidQuickS-app.iml" group="AndroidQuickS/app" />
-      <module fileurl="file://$PROJECT_DIR$/quickclipboard/AndroidQuickS-quickclipboard.iml" filepath="$PROJECT_DIR$/quickclipboard/AndroidQuickS-quickclipboard.iml" group="AndroidQuickS/quickclipboard" />
-      <module fileurl="file://$PROJECT_DIR$/quicknoti/AndroidQuickS-quicknoti.iml" filepath="$PROJECT_DIR$/quicknoti/AndroidQuickS-quicknoti.iml" group="AndroidQuickS/quicknoti" />
-      <module fileurl="file://$PROJECT_DIR$/quickpermission/AndroidQuickS-quickpermission.iml" filepath="$PROJECT_DIR$/quickpermission/AndroidQuickS-quickpermission.iml" group="AndroidQuickS/quickpermission" />
-      <module fileurl="file://$PROJECT_DIR$/quickset/AndroidQuickS-quickset.iml" filepath="$PROJECT_DIR$/quickset/AndroidQuickS-quickset.iml" group="AndroidQuickS/quickset" />
-      <module fileurl="file://$PROJECT_DIR$/quickset_o/AndroidQuickS-quickset_o.iml" filepath="$PROJECT_DIR$/quickset_o/AndroidQuickS-quickset_o.iml" group="AndroidQuickS/quickset_o" />
-      <module fileurl="file://$PROJECT_DIR$/quicktools/AndroidQuickS-quicktools.iml" filepath="$PROJECT_DIR$/quicktools/AndroidQuickS-quicktools.iml" group="AndroidQuickS/quicktools" />
-      <module fileurl="file://$PROJECT_DIR$/quickview/AndroidQuickS-quickview.iml" filepath="$PROJECT_DIR$/quickview/AndroidQuickS-quickview.iml" group="AndroidQuickS/quickview" />
-      <module fileurl="file://$PROJECT_DIR$/quickwelcome/AndroidQuickS-quickwelcome.iml" filepath="$PROJECT_DIR$/quickwelcome/AndroidQuickS-quickwelcome.iml" group="AndroidQuickS/quickwelcome" />
       <module fileurl="file://$PROJECT_DIR$/QuickNet/QuickNet.iml" filepath="$PROJECT_DIR$/QuickNet/QuickNet.iml" />
       <module fileurl="file://$PROJECT_DIR$/QuickNet/QuickNet-quicknet.iml" filepath="$PROJECT_DIR$/QuickNet/QuickNet-quicknet.iml" group="AndroidQuickS/quicknet" />
       <module fileurl="file://$PROJECT_DIR$/QuickTime/QuickTime.iml" filepath="$PROJECT_DIR$/QuickTime/QuickTime.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Quickactivity/Quickactivity.iml" filepath="$PROJECT_DIR$/Quickactivity/Quickactivity.iml" group="AndroidQuickS/Quickactivity" />
+      <module fileurl="file://$PROJECT_DIR$/Quickclipboard/Quickclipboard.iml" filepath="$PROJECT_DIR$/Quickclipboard/Quickclipboard.iml" group="AndroidQuickS/Quickclipboard" />
+      <module fileurl="file://$PROJECT_DIR$/Quickfile4a/Quickfile4a.iml" filepath="$PROJECT_DIR$/Quickfile4a/Quickfile4a.iml" group="AndroidQuickS/Quickfile4a" />
+      <module fileurl="file://$PROJECT_DIR$/Quicklog/Quicklog.iml" filepath="$PROJECT_DIR$/Quicklog/Quicklog.iml" group="AndroidQuickS/Quicklog" />
+      <module fileurl="file://$PROJECT_DIR$/Quicknoti/Quicknoti.iml" filepath="$PROJECT_DIR$/Quicknoti/Quicknoti.iml" group="AndroidQuickS/Quicknoti" />
+      <module fileurl="file://$PROJECT_DIR$/Quickpermission/Quickpermission.iml" filepath="$PROJECT_DIR$/Quickpermission/Quickpermission.iml" group="AndroidQuickS/Quickpermission" />
+      <module fileurl="file://$PROJECT_DIR$/Quickset/Quickset.iml" filepath="$PROJECT_DIR$/Quickset/Quickset.iml" group="AndroidQuickS/Quickset" />
+      <module fileurl="file://$PROJECT_DIR$/Quicktools/Quicktools.iml" filepath="$PROJECT_DIR$/Quicktools/Quicktools.iml" group="AndroidQuickS/Quicktools" />
+      <module fileurl="file://$PROJECT_DIR$/Quickview/Quickview.iml" filepath="$PROJECT_DIR$/Quickview/Quickview.iml" group="AndroidQuickS/Quickview" />
+      <module fileurl="file://$PROJECT_DIR$/Quickwelcome/Quickwelcome.iml" filepath="$PROJECT_DIR$/Quickwelcome/Quickwelcome.iml" group="AndroidQuickS/Quickwelcome" />
       <module fileurl="file://$PROJECT_DIR$/android-AndroidQuickS.iml" filepath="$PROJECT_DIR$/android-AndroidQuickS.iml" group="AndroidQuickS" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/quickclipboard/quickclipboard.iml" filepath="$PROJECT_DIR$/quickclipboard/quickclipboard.iml" />
       <module fileurl="file://$PROJECT_DIR$/quicknet/quicknet.iml" filepath="$PROJECT_DIR$/quicknet/quicknet.iml" />
-      <module fileurl="file://$PROJECT_DIR$/quicknoti/quicknoti.iml" filepath="$PROJECT_DIR$/quicknoti/quicknoti.iml" />
-      <module fileurl="file://$PROJECT_DIR$/quickpermission/quickpermission.iml" filepath="$PROJECT_DIR$/quickpermission/quickpermission.iml" />
-      <module fileurl="file://$PROJECT_DIR$/quickset/quickset.iml" filepath="$PROJECT_DIR$/quickset/quickset.iml" />
-      <module fileurl="file://$PROJECT_DIR$/quickset_o/quickset_o.iml" filepath="$PROJECT_DIR$/quickset_o/quickset_o.iml" />
-      <module fileurl="file://$PROJECT_DIR$/quicktools/quicktools.iml" filepath="$PROJECT_DIR$/quicktools/quicktools.iml" />
-      <module fileurl="file://$PROJECT_DIR$/quickview/quickview.iml" filepath="$PROJECT_DIR$/quickview/quickview.iml" />
-      <module fileurl="file://$PROJECT_DIR$/quickwelcome/quickwelcome.iml" filepath="$PROJECT_DIR$/quickwelcome/quickwelcome.iml" />
     </modules>
   </component>
 </project>

@@ -1,2 +1,6 @@
-include ':app', ':quickset', ':quickwelcome', ':quickview', ':quickpermission', ':quickset_o', ':quicktools', ':QuickTime', ':quicknoti', ':quicknet', ':quickclipboard', ':quickclipboard'
 rootProject.name='AndroidQuickS'
+include ':app'
+include ':Quickactivity', ':Quickset', ':Quickwelcome', ':Quickpermission', ':Quicknoti', ':Quickclipboard'
+include ':Quickview'
+include ':Quicklog', ':Quicktools', ':quicknet'
+include ':Quickfile4a'
