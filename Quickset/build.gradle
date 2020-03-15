@@ -31,6 +31,9 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:29.0.0'
     implementation 'androidx.appcompat:appcompat:1.1.0'
     testImplementation 'junit:junit:4.12'
+
+ //   implementation project(path: ':Quicktools')
+  //  implementation project(path: ':Quickview')
     implementation 'com.blxt.Qandroid:quicktools:1.0.0'
     implementation 'com.blxt.Qandroid:quickview:1.0.0'
 }
@@ -52,29 +55,14 @@ uploadArchives {
                 // nexus账号的用户名和密码，我这里没用默认的admin
                 authentication(userName: "admin", password: "15256632121a.")
             }
-            // 上传本地
-//      def mavenDirPath = file('E:\\ProgramData\\Maven\\maven-repository')
-//      repository(url: "file://${mavenDirPath.absolutePath}")
+
             pom.project {
                 name 'quickset'
                 groupId 'com.blxt.Qandroid'
                 artifactId 'quickset'
-                version '1.0.0'
+                version '1.0.1'
                 packaging 'aar'
 
-                licenses {
-                    license {
-                        name 'The Apache Software License, Version 2.0'
-                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                        distribution 'repo'
-                    }
-                }
-                developers {
-                    developer {
-                        id 'blxt'
-                        name 'blxt'
-                    }
-                }
             }
         }
     }
