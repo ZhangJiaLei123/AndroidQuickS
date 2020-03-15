@@ -30,6 +30,9 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0'
     testImplementation 'junit:junit:4.12'
 
+    //  implementation project(path: ':Quicktools')
+    //  implementation project(path: ':Quickview')
+
     implementation 'com.blxt.Qandroid:quicktools:1.0.0'
     implementation 'com.blxt.Qandroid:quickview:1.0.0'
 
@@ -52,22 +55,13 @@ uploadArchives {
                 // nexus账号的用户名和密码，我这里没用默认的admin
                 authentication(userName: "admin", password: "15256632121a.")
             }
-            // 上传本地
-//      def mavenDirPath = file('E:\\ProgramData\\Maven\\maven-repository')
-//      repository(url: "file://${mavenDirPath.absolutePath}")
+
             pom.project {
                 name 'quickpermission'
                 groupId 'com.blxt.Qandroid'
                 artifactId 'quickpermission'
                 version '1.0.0'
                 packaging 'aar'
-
-                developers {
-                    developer {
-                        id 'blxt'
-                        name 'blxt'
-                    }
-                }
             }
         }
     }
