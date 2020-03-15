@@ -1,11 +1,9 @@
 apply plugin: 'com.android.library'
-
 apply plugin: 'maven'
+
 
 android {
     compileSdkVersion 29
-    buildToolsVersion "29.0.1"
-
 
     defaultConfig {
         minSdkVersion 15
@@ -31,10 +29,12 @@ dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.1.0'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    implementation 'com.blxt.Qandroid:quicktools:1.0.0'
+    implementation 'com.blxt.Qandroid:quickview:1.0.0'
+
 }
-//  gradlew :quicknoti:uploadArchives
+//  gradlew :quickpermission:uploadArchives
 //打包main目录下代码和资源的 task
 task androidSourcesJar(type: Jar) {
     classifier = 'sources'
@@ -56,19 +56,12 @@ uploadArchives {
 //      def mavenDirPath = file('E:\\ProgramData\\Maven\\maven-repository')
 //      repository(url: "file://${mavenDirPath.absolutePath}")
             pom.project {
-                name 'quicknoti'
+                name 'quickpermission'
                 groupId 'com.blxt.Qandroid'
-                artifactId 'quicknoti'
+                artifactId 'quickpermission'
                 version '1.0.0'
                 packaging 'aar'
 
-                licenses {
-                    license {
-                        name 'The Apache Software License, Version 2.0'
-                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                        distribution 'repo'
-                    }
-                }
                 developers {
                     developer {
                         id 'blxt'

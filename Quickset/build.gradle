@@ -3,9 +3,6 @@ apply plugin: 'maven'
 
 android {
     compileSdkVersion 29
-    buildToolsVersion "29.0.1"
-
-
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 29
@@ -13,7 +10,6 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles 'consumer-rules.pro'
     }
 
     buildTypes {
@@ -31,22 +27,14 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
+    implementation 'com.android.support:support-v4:29.0.0'
+    implementation 'com.android.support:appcompat-v7:29.0.0'
     implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    implementation 'com.google.android.material:material:1.0.0'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-
-    implementation 'io.reactivex:rxandroid:1.1.0'
-    implementation 'io.reactivex:rxjava:1.1.0'
-
-    implementation project(path: ':quickview')
-  //  implementation 'com.qfxl:roundProgressBar:1.1.1'
-
+    implementation 'com.blxt.Qandroid:quicktools:1.0.0'
+    implementation 'com.blxt.Qandroid:quickview:1.0.0'
 }
-//  gradlew :quickwelcome:uploadArchives
+//  gradlew :quickset:uploadArchives
 //打包main目录下代码和资源的 task
 task androidSourcesJar(type: Jar) {
     classifier = 'sources'
@@ -68,9 +56,9 @@ uploadArchives {
 //      def mavenDirPath = file('E:\\ProgramData\\Maven\\maven-repository')
 //      repository(url: "file://${mavenDirPath.absolutePath}")
             pom.project {
-                name 'quickwelcome'
+                name 'quickset'
                 groupId 'com.blxt.Qandroid'
-                artifactId 'quickwelcome'
+                artifactId 'quickset'
                 version '1.0.0'
                 packaging 'aar'
 

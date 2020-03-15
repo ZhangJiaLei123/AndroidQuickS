@@ -2,11 +2,10 @@ apply plugin: 'com.android.library'
 apply plugin: 'maven'
 
 android {
-    compileSdkVersion 28
-
+    compileSdkVersion 29
     defaultConfig {
         minSdkVersion 15
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
 
@@ -21,21 +20,15 @@ android {
         }
     }
 
-    lintOptions {
-        abortOnError false
-    }
-
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    implementation 'androidx.appcompat:appcompat:1.1.0'
     testImplementation 'junit:junit:4.12'
-    implementation project(path: ':quicktools')
-    // testImplementation project(path: ':quicktools')
 }
-
-//  gradlew :quickview:uploadArchives
+//  gradlew :quickclipboard:uploadArchives
 //打包main目录下代码和资源的 task
 task androidSourcesJar(type: Jar) {
     classifier = 'sources'
@@ -57,9 +50,9 @@ uploadArchives {
 //      def mavenDirPath = file('E:\\ProgramData\\Maven\\maven-repository')
 //      repository(url: "file://${mavenDirPath.absolutePath}")
             pom.project {
-                name 'quickview'
-                groupId 'com.blxt.Qandroid'
-                artifactId 'quickview'
+                name 'quickclipboard'
+                groupId 'com.blxt.Qandroid'  // 唯一标识（通常为模块包名，也可以任意）
+                artifactId 'quickclipboard'
                 version '1.0.0'
                 packaging 'aar'
 
