@@ -39,8 +39,10 @@ dependencies {
     implementation 'io.reactivex:rxandroid:1.1.0'
     implementation 'io.reactivex:rxjava:1.1.0'
 
+    //  implementation project(path: ':Quicktools')
+    //implementation project(path: ':Quickview')
     implementation 'com.blxt.Qandroid:quickview:1.0.0'
-  //  implementation 'com.qfxl:roundProgressBar:1.1.1'
+    //implementation 'com.qfxl:roundProgressBar:1.1.1'
 
 }
 //  gradlew :quickwelcome:uploadArchives
@@ -61,9 +63,7 @@ uploadArchives {
                 // nexus账号的用户名和密码，我这里没用默认的admin
                 authentication(userName: "admin", password: "15256632121a.")
             }
-            // 上传本地
-//      def mavenDirPath = file('E:\\ProgramData\\Maven\\maven-repository')
-//      repository(url: "file://${mavenDirPath.absolutePath}")
+
             pom.project {
                 name 'quickwelcome'
                 groupId 'com.blxt.Qandroid'
@@ -71,19 +71,6 @@ uploadArchives {
                 version '1.0.0'
                 packaging 'aar'
 
-                licenses {
-                    license {
-                        name 'The Apache Software License, Version 2.0'
-                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                        distribution 'repo'
-                    }
-                }
-                developers {
-                    developer {
-                        id 'blxt'
-                        name 'blxt'
-                    }
-                }
             }
         }
     }
