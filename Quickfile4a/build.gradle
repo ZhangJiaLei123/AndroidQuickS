@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'maven'
 
 android {
     compileSdkVersion 29
@@ -25,14 +26,13 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
-    implementation 'androidx.appcompat:appcompat:1.1.0'
     testImplementation 'junit:junit:4.12'
 
     implementation 'com.blxt.qJava:qfile:1.0.0'
 }
 
-//  gradlew :quickfile4a:uploadArchives
+// gradlew :Quickfile4A:uploadArchives
+
 //打包main目录下代码和资源的 task
 task androidSourcesJar(type: Jar) {
     classifier = 'sources'
@@ -42,17 +42,19 @@ task androidSourcesJar(type: Jar) {
 artifacts {
     archives androidSourcesJar
 }
+
 uploadArchives {
     repositories {
-        // 上传到服务器
         mavenDeployer {
             repository(url: "http://zhangjialei.cn:8083/repository/maven-releases/") {
+                // nexus账号的用户名和密码，我这里没用默认的admin
                 authentication(userName: "zhangjialei", password: "15256632121")
             }
             pom.project {
+                name 'QuickFile4A'
                 groupId 'com.blxt.Qandroid'  // 唯一标识（通常为模块包名，也可以任意）
                 artifactId 'quickfile4a'
-                version '1.0.0'
+                version '1.0.1'
                 packaging 'aar'
             }
         }

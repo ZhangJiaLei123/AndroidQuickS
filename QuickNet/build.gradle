@@ -46,11 +46,11 @@ uploadArchives {
         mavenDeployer {
             repository(url: "http://zhangjialei.cn:8083/repository/maven-releases/") {
                 // nexus账号的用户名和密码，我这里没用默认的admin
-                authentication(userName: "admin", password: "15256632121a.")
+                authentication(userName: "zhangjialei", password: "15256632121")
             }
 
             pom.project {
-                name 'quicknet'
+                name 'QuickNet'
                 groupId 'com.blxt.Qandroid'
                 artifactId 'quicknet'
                 version '1.0.0'
