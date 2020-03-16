@@ -1,4 +1,4 @@
-package com.heneng.quicknoti;
+package com.blxt.quicknoti;
 
 import android.content.Context;
 import android.os.Handler;

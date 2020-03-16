@@ -14,7 +14,7 @@ import java.io.File;
 public abstract class AbstractApplication
   extends Application
 {
-  static final String TAG = "AbstractApplication";
+ // static final String TAG = "AbstractApplication";
   protected QAppConfig appConfig;
   protected String APP_SD_PATH = null;
 

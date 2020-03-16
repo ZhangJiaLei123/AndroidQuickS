@@ -56,9 +56,8 @@ uploadArchives {
                 name 'QuickNoti'
                 groupId 'com.blxt.Qandroid'
                 artifactId 'quicknoti'
-                version '1.0.0'
+                version '1.0.1'
                 packaging 'aar'
-
             }
         }
     }
