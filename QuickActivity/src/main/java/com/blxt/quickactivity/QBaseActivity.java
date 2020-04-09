@@ -22,7 +22,6 @@ public abstract class QBaseActivity
         }
     };
 
-
     protected static QAppManager appManager;
     protected static QAppConfig appConfig;
 

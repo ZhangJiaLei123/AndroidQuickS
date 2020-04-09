@@ -41,7 +41,7 @@ public class SettingFragment extends BaseSettingFragment implements BaseSetItemV
 
     private void initItems(){
 
-        SetItemView setItemView =  (SetItemView)new SetItemView(getContext(), "分享")
+        SetItemView setItemView =  (SetItemView)new SetItemView(getContext())
                 .setTitleImage(R.mipmap.ic_launcher_round)
                 .setHint("分享安装连接");
         setItemView.getTv_title().setTextSize(24);
@@ -49,10 +49,10 @@ public class SettingFragment extends BaseSettingFragment implements BaseSetItemV
         setItemView.setPadding(5, 10 , 5, 10);
      //   setItemView.setLogoSize(90, 90);
 
-        addItem(new SetItemViewSw(getContext(), "开机自启")
+        addItem(new SetItemViewSw(getContext())
                 .setTitleImage(R.mipmap.ic_launcher_round)
                 .setHint("需要权限"));
-        addItem(new SetItemViewSw(getContext(), "固定通知")
+        addItem(new SetItemViewSw(getContext())
                 .setTitleImage(R.mipmap.ic_launcher_round));
 
         addItem(new SetBrighView( getActivity(),"亮度")
@@ -64,26 +64,6 @@ public class SettingFragment extends BaseSettingFragment implements BaseSetItemV
 
         // 分组
         addItem(new SetItemViewSeparator(getContext(), null, R.color.btn_text_on));
-
-        addItem(new SetItemViewChoose(getContext(), "息屏", "关闭").setChooseItems(new String[]{"关闭", "30s", "5min"})
-                .setTitleImage(R.mipmap.ic_launcher_round));
-        // 分组
-        addItem(new SetItemViewSeparator(getContext(), "分享"));
-
-        addItem(setItemView);
-        addItem(new SetItemView(getContext(), "支持")
-                .setTitleImage(R.mipmap.ic_launcher_round)
-                .setHint("去评分"));
-        addItem(new SetItemView(getContext(), "GitHub开源")
-                .setTitleImage(R.mipmap.ic_launcher_round)
-                .setHint("欢迎Star"));
-        addItem(new SetItemView(getContext(), "检查更新")
-                .setTitleImage(R.mipmap.ic_launcher_round)
-                .setHint(R.string.app_version));
-        addItem(new SetItemViewSw(getContext(), "恢复出厂模式")
-                .setTitleImage(R.mipmap.ic_launcher_round)
-                .setHint("重新运行引导页")
-                .setSpKey("首次运行"));
 
         addItem(new ListItemUserWithBtn(getContext()));
 
