@@ -54,7 +54,7 @@ uploadArchives {
                 name 'QuickFile4A'
                 groupId 'com.blxt.Qandroid'  // 唯一标识（通常为模块包名，也可以任意）
                 artifactId 'quickfile4a'
-                version '1.0.1'
+                version '1.1.1'
                 packaging 'aar'
             }
         }
