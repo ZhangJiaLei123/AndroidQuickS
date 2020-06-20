@@ -56,9 +56,8 @@ uploadArchives {
                 name 'QuickLog'
                 groupId 'com.blxt.Qandroid'  // 唯一标识（通常为模块包名，也可以任意）
                 artifactId 'quicklog'
-                version '1.0.0'
+                version '1.1.2'
                 packaging 'aar'
-
             }
         }
     }
