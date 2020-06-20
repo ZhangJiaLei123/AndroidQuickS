@@ -26,17 +26,17 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation 'androidx.appcompat:appcompat:1.1.0'
-    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.13'
 
    // implementation project(path: ':Quicktools')
    // implementation project(path: ':Quickview')
    // implementation project(path: ':Quicklog')
   //  implementation project(path: ':Quickpermission')
 
-    implementation 'com.blxt.Qandroid:quicklog:1.0.0'
-    implementation 'com.blxt.Qandroid:quickpermission:1.0.0'
-    implementation 'com.blxt.Qandroid:quicktools:1.0.0'
-    implementation 'com.blxt.Qandroid:quickview:1.0.0'
+    implementation 'com.blxt.Qandroid:quicklog:1.1.1'
+    implementation 'com.blxt.Qandroid:quickpermission:1.1.0'
+    implementation 'com.blxt.Qandroid:quicktools:1.1.1'
+    implementation 'com.blxt.Qandroid:quickview:1.1.0'
 }
 
  // gradlew :quickactivity:uploadArchives
@@ -63,7 +63,7 @@ uploadArchives {
                 name 'QuickActivity'
                 groupId 'com.blxt.Qandroid'  // 唯一标识（通常为模块包名，也可以任意）
                 artifactId 'quickactivity'
-                version '1.0.0'
+                version '1.1.2'
                 packaging 'aar'
             }
         }
