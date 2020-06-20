@@ -18,7 +18,6 @@ public class TipToast
 
   public static TipToast newInstance(Context context, Handler callBack) { return new TipToast(context, callBack); }
 
-
   private TipToast(Context context, Handler handler) {
     this.context = context;
     this.handler = handler;

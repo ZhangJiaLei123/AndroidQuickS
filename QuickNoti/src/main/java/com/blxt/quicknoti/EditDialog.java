@@ -132,7 +132,6 @@ public class EditDialog
     public void show() {
         super.show();
 
-
         WindowManager.LayoutParams layoutParams = getWindow().getAttributes();
         layoutParams.width = -1;
         layoutParams.height = -1;
