@@ -51,7 +51,7 @@ uploadArchives {
                 name 'QuickClipboard'
                 groupId 'com.blxt.Qandroid'  // 唯一标识（通常为模块包名，也可以任意）
                 artifactId 'quickclipboard'
-                version '1.0.0'
+                version '1.1.0'
                 packaging 'aar'
 
             }
