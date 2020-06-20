@@ -34,8 +34,8 @@ dependencies {
 
  //   implementation project(path: ':Quicktools')
   //  implementation project(path: ':Quickview')
-    implementation 'com.blxt.Qandroid:quicktools:1.0.0'
-    implementation 'com.blxt.Qandroid:quickview:1.0.0'
+    implementation 'com.blxt.Qandroid:quicktools:1.1.1'
+    implementation 'com.blxt.Qandroid:quickview:1.1.0'
 }
 //  gradlew :quickset:uploadArchives
 //打包main目录下代码和资源的 task
@@ -60,7 +60,7 @@ uploadArchives {
                 name 'QuickSet'
                 groupId 'com.blxt.Qandroid'
                 artifactId 'quickset'
-                version '1.0.1'
+                version '1.1.1'
                 packaging 'aar'
 
             }
