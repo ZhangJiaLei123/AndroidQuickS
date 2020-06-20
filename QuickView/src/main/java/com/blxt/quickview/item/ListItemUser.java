@@ -70,9 +70,9 @@ public class ListItemUser
         this.btnOk.setOnClickListener(this);
         this.btnCancel.setOnClickListener(this);
 
-        this.btnOk.setVisibility(8);
-        this.btnCancel.setVisibility(8);
-        this.tvUserTip.setVisibility(8);
+        this.btnOk.setVisibility(GONE);
+        this.btnCancel.setVisibility(GONE);
+        this.tvUserTip.setVisibility(GONE);
     }
 
     public ListItemUser setIndex(int index) {
