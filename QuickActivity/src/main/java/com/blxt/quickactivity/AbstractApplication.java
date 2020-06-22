@@ -5,6 +5,7 @@ import android.app.Application;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
 import android.os.Environment;
 import android.os.Process;
 
@@ -73,4 +74,21 @@ public abstract class AbstractApplication
         mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 1000L, restartIntent);
         Process.killProcess(Process.myPid());
     }
+
+
+//    /**
+//     * 是否是Debug
+//     * @param context
+//     * @return
+//     */
+//    public boolean isDebugApp(Context context) {
+//        try {
+//            ApplicationInfo info = context.getApplicationInfo();
+//            return (info.flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0;
+//        } catch (Exception x) {
+//            return false;
+//        }
+//    }
+
+
 }
