@@ -50,4 +50,82 @@ dependencies {
 //    implementation project(path: ':Quickpermission', path: ':Quickpermission')
 
     // implementation 'com.qfxl:roundProgressBar:1.1.1'
+
+    /* netty */
+    implementation("io.netty:netty-buffer:${property('netty.version')}")
+    implementation("io.netty:netty-codec:${property('netty.version')}")
+    implementation("io.netty:netty-codec-http:${property('netty.version')}")
+    implementation("io.netty:netty-common:${property('netty.version')}")
+    implementation("io.netty:netty-handler:${property('netty.version')}")
+    implementation("io.netty:netty-transport:${property('netty.version')}")
+
+    /* logging */
+    implementation("org.slf4j:slf4j-api:${property('slf4j.version')}")
+    implementation("org.slf4j:jul-to-slf4j:${property('slf4j.version')}")
+    implementation("ch.qos.logback:logback-classic:${property('logback.version')}")
+
+    /* security - bouncycastle */
+    implementation("org.bouncycastle:bcprov-jdk15on:${property('bouncycastle.version')}")
+    implementation("org.bouncycastle:bcpkix-jdk15on:${property('bouncycastle.version')}")
+
+    /* persistence - rocksdb */
+    implementation("org.rocksdb:rocksdbjni:${property('rocksdb.version')}")
+
+    /* persistence - xodus */
+    implementation("org.jetbrains.xodus:xodus-openAPI:${property('xodus.version')}") {
+        exclude group: 'org.jetbrains', module: 'annotations'
+    }
+    implementation("org.jetbrains.xodus:xodus-environment:${property('xodus.version')}") {
+        exclude group: 'org.jetbrains', module: 'annotations'
+    }
+
+//    /* config - xml */
+    implementation("jakarta.xml.bind:jakarta.xml.bind-api:${property('jaxb.version')}")
+    runtimeOnly("com.sun.xml.bind:jaxb-impl:${property('jaxb.version')}")
+
+    /* metrics */
+    api("io.dropwizard.metrics:metrics-core:${property('metrics.version')}")
+    implementation("io.dropwizard.metrics:metrics-jmx:${property('metrics.version')}")
+    runtimeOnly("io.dropwizard.metrics:metrics-logback:${property('metrics.version')}")
+
+    /* metrics - oshi */
+    implementation("com.github.oshi:oshi-core:${property('oshi.version')}")
+    implementation("net.java.dev.jna:jna") {
+        because 'we use it as a transitive dependency of com.github.oshi:oshi-core'
+    }
+//
+//    /* dependency injection */
+    implementation("com.google.inject:guice:${property('guice.version')}") {
+        exclude group: 'com.google.guava', module: 'guava'
+    }
+    implementation("javax.annotation:javax.annotation-api:${property('javax.annotation.version')}")
+    implementation("javax.inject:javax.inject") {
+        because 'we use it as a transitive dependency of com.google.inject:guice'
+    }
+//
+//    /* common - apache */
+    implementation("commons-io:commons-io:${property('commons-io.version')}")
+    implementation("org.apache.commons:commons-lang3:${property('commons-lang.version')}")
+
+//    /* common - guava */
+    implementation("com.google.guava:guava:${property('guava.version')}") {
+        exclude group: 'org.checkerframework', module: 'checker-qual'
+        exclude group: 'com.google.errorprone', module: 'error_prone_annotations'
+        exclude group: 'org.codehaus.mojo', module: 'animal-sniffer-annotations'
+    }
+    implementation("com.google.code.findbugs:jsr305") {
+        because 'we use it as a transitive dependency of com.google.guava:guava'
+    }
+//
+    /* hashing */
+    implementation("net.openhft:zero-allocation-hashing:${property('zero-allocation-hashing.version')}")
+//
+//    /* jackson */
+    implementation("com.fasterxml.jackson.core:jackson-databind:${property('jackson.version')}")
+
+    /* temporary dependencies to override transitive ones that have security vulnerabilities */
+    constraints {
+        implementation("org.jetbrains.kotlin:kotlin-stdlib:1.3.71")
+        implementation("org.apache.commons:commons-compress:1.20")
+    }
 }

@@ -15,10 +15,22 @@ import com.blxt.androidquicks.fragment.SettingFragment;
 import com.blxt.quickpermission.PermissionHelp;
 import com.blxt.quickview.dialog.BrightnessDialog;
 
+//import com.codahale.metrics.jmx.JmxReporter;
+//import net.openhft.hashing.LongHashFunction;
+import jetbrains.exodus.env.EnvironmentConfig;
+import jetbrains.exodus.io.FileDataWriter;
+import org.rocksdb.*;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.util.concurrent.FutureCallback;
+import com.google.common.util.concurrent.ListenableFuture;
+import com.google.common.util.concurrent.ListeningScheduledExecutorService;
+
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
     static Activity activity;
+
 
     public static void start(Context context) {
         if(activity == null){
@@ -59,6 +71,27 @@ public class MainActivity extends AppCompatActivity {
         //选择fragment替换的部分
         ft.replace(R.id.cl_content,fragment);
         ft.commit();
+    }
+
+
+    private void test(){
+
+
+        final ListenableFuture<Map<String, PendingWill>> future = clientSessionPersistence.pendingWills();
+
+        new FutureCallback< Map<String, Object>>() {
+
+            @Override
+            public void onSuccess(Map<String, Object> result) {
+
+            }
+
+            @Override
+            public void onFailure(  final Throwable t) {
+
+            }
+        };
+
     }
 
 }
