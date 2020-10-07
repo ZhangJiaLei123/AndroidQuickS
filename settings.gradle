@@ -1,3 +1,4 @@
+include ':QuickWindows'
 include ':Qusb4a'
 rootProject.name='AndroidQuickS'
 include ':app'

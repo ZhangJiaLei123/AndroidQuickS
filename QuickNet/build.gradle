@@ -46,7 +46,7 @@ uploadArchives {
         mavenDeployer {
             repository(url: "http://zhangjialei.cn:8083/repository/maven-releases/") {
                 // nexus账号的用户名和密码，我这里没用默认的admin
-                authentication(userName: "zhangjialei", password: "15256632121")
+                authentication(userName: "user", password: "2356636418")
             }
 
             pom.project {
