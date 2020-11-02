@@ -5,8 +5,8 @@ import android.content.Context;
 import android.hardware.usb.UsbDevice;
 import android.hardware.usb.UsbManager;
 
-import com.hoho.android.usbserial.driver.UsbSerialDriver;
-import com.hoho.android.usbserial.driver.UsbSerialProber;
+import com.blxt.qusb4a.driver.UsbSerialDriver;
+import com.blxt.qusb4a.driver.UsbSerialProber;
 
 import java.util.ArrayList;
 import java.util.HashMap;
